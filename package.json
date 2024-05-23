@@ -1,7 +1,7 @@
 {
-  "name": "solana-dapp-next",
-  "version": "0.2.0",
-  "author": "Solana Maintainers <maintainers@solana.foundation>",
+  "name": "cdatanft-gallery",
+  "version": "0.0.1",
+  "author": "Itheum",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -11,35 +11,46 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.5",
-    "@noble/ed25519": "^1.7.1",
-    "@solana/wallet-adapter-base": "^0.9.22",
-    "@solana/wallet-adapter-react": "^0.15.32",
-    "@solana/wallet-adapter-react-ui": "^0.9.31",
-    "@solana/wallet-adapter-wallets": "^0.19.16",
-    "@solana/web3.js": "^1.73.0",
-    "@tailwindcss/typography": "^0.5.9",
-    "daisyui": "^1.24.3",
-    "date-fns": "^2.29.3",
-    "immer": "^9.0.12",
-    "next": "^13.1.5",
-    "next-compose-plugins": "^2.2.1",
-    "next-transpile-modules": "^10.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "zustand": "^3.6.9"
+    "@heroicons/react": "2.1.3",
+    "@metaplex-foundation/digital-asset-standard-api": "1.0.3",
+    "@metaplex-foundation/mpl-bubblegum": "3.1.2",
+    "@metaplex-foundation/mpl-token-metadata": "3.2.1",
+    "@metaplex-foundation/umi": "0.8.10",
+    "@metaplex-foundation/umi-bundle-defaults": "0.8.10",
+    "@metaplex-foundation/umi-web3js-adapters": "0.8.10",
+    "@noble/ed25519": "2.1.0",
+    "@solana/spl-account-compression": "0.2.1",
+    "@solana/spl-token": "0.4.6",
+    "@solana/wallet-adapter-base": "0.9.23",
+    "@solana/wallet-adapter-react": "0.15.35",
+    "@solana/wallet-adapter-react-ui": "0.9.35",
+    "@solana/wallet-adapter-wallets": "0.19.32",
+    "@solana/web3.js": "1.91.8",
+    "@tailwindcss/typography": "0.5.13",
+    "daisyui": "4.11.1",
+    "date-fns": "3.6.0",
+    "immer": "10.1.1",
+    "next": "14.2.3",
+    "next-compose-plugins": "2.2.1",
+    "next-transpile-modules": "10.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zustand": "4.5.2"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.27",
-    "autoprefixer": "^10.4.2",
-    "eslint": "8.7.0",
-    "eslint-config-next": "^13.1.5",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.4"
+    "@types/node": "18.19.33",
+    "@types/react": "18.3.2",
+    "@typescript-eslint/eslint-plugin": "7.2.0",
+    "@typescript-eslint/parser": "7.2.0",
+    "autoprefixer": "10.4.19",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.3",
+    "postcss": "8.4.38",
+    "prettier": "3.2.5",
+    "tailwindcss": "3.4.3",
+    "typescript": "5.4.5"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }
