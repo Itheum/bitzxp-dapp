@@ -8,7 +8,7 @@ const NetworkSwitcher: FC = () => {
   console.log(networkConfiguration);
 
   return (
-    <label className="cursor-pointer label">
+    <label className="cursor-pointer gap-2 label">
       <a>Network</a>
       <select             
         value={networkConfiguration}
