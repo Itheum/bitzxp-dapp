@@ -1,18 +1,58 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import Image from 'next/image';
+import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
+import { verify } from '@noble/ed25519';
+import { notify } from '../../utils/notifications';
+import bs58 from 'bs58';
 
 export const GalleryView: FC = ({}) => {
-  const wallet = useWallet();
+  const { publicKey, signMessage } = useWallet();
   const nfts = useUserDataNFTsStore((s) => s.nfts);
   const { getUserDataNfts } = useUserDataNFTsStore();
 
   useEffect(() => {
-    if (wallet.publicKey) {
-      getUserDataNfts(wallet.publicKey);
+    if (publicKey) {
+      getUserDataNfts(publicKey);
     }
-  }, [wallet.publicKey, getUserDataNfts]);
+  }, [publicKey, getUserDataNfts]);
+
+  const signPreaccess = useCallback(async () => {
+    const nonce = await itheumPreaccess();
+    console.log(nonce);
+    try {
+      if (!publicKey) throw new Error('Wallet not connected!');
+      if (!signMessage)
+        throw new Error('Wallet does not support message signing!');
+      const message = new TextEncoder().encode(nonce);
+      const signature = await signMessage(message);
+      const encodedSignature = bs58.encode(signature);
+      if (!verify(signature, message, publicKey.toBytes()))
+        throw new Error('Invalid signature!');
+      notify({
+        type: 'success',
+        message: 'Message signed successfully!',
+        txid: encodedSignature,
+      });
+      return { nonce, signature: encodedSignature };
+    } catch (error: any) {
+      notify({
+        type: 'error',
+        message: 'Message signing failed!',
+        description: error?.message,
+      });
+      console.log('error', `Sign Message failed! ${error?.message}`);
+    }
+  }, [publicKey, signMessage]);
+
+  const handleViewDataClick = async (nft) => {
+    const { nonce, signature } = await signPreaccess();
+    const assetId = nft.id;
+    const address = publicKey;
+    if (!nonce || !signature || !assetId || !address) return;
+    itheumViewData(assetId, nonce, signature, address);
+  };
 
   return (
     <div className="md:hero mx-auto p-4">
@@ -40,6 +80,9 @@ export const GalleryView: FC = ({}) => {
               <button
                 type="button"
                 className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-6"
+                onClick={() => {
+                  handleViewDataClick(nft);
+                }}
               >
                 View Data
               </button>
