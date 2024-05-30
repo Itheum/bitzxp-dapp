@@ -8,6 +8,16 @@ const nextConfig = {
         hostname: 'ipfs.io',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'devnet-media.elrond.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'devnet-explorer.multiversx.com',
+        pathname: '**',
+      },
     ],
   },
 };

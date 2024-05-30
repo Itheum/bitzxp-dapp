@@ -51,6 +51,12 @@ export const GalleryView: FC = ({}) => {
     const assetId = nft.id;
     const address = publicKey;
     if (!nonce || !signature || !assetId || !address) return;
+    console.log('View Data', {
+      assetId,
+      nonce,
+      signature,
+      address: address.toBase58(),
+    });
     itheumViewData(assetId, nonce, signature, address);
   };
 
@@ -65,10 +71,13 @@ export const GalleryView: FC = ({}) => {
           {nfts.map((nft, idx) => (
             <div
               key={idx}
-              className="flex flex-col p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              className=" mx-5 flex flex-col p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
               <Image
-                src={nft.content.files[0].uri}
+                src={
+                  nft.content.files[0]?.uri ??
+                  'https://devnet-explorer.multiversx.com/assets/img/default.png'
+                }
                 alt={nft.content.metadata.name}
                 width={160}
                 height={160}
