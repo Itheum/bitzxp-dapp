@@ -19,38 +19,37 @@ export const GalleryView: FC = ({}) => {
 
   const signPreaccess = useCallback(async () => {
     const nonce = await itheumPreaccess();
-    console.log(nonce);
-    try {
-      if (!publicKey) throw new Error('Wallet not connected!');
-      if (!signMessage)
-        throw new Error('Wallet does not support message signing!');
-      const message = new TextEncoder().encode(nonce);
-      const signature = await signMessage(message);
-      const encodedSignature = bs58.encode(signature);
-      if (!verify(signature, message, publicKey.toBytes()))
-        throw new Error('Invalid signature!');
-      notify({
-        type: 'success',
-        message: 'Message signed successfully!',
-        txid: encodedSignature,
-      });
-      return { nonce, signature: encodedSignature };
-    } catch (error: any) {
-      notify({
-        type: 'error',
-        message: 'Message signing failed!',
-        description: error?.message,
-      });
-      console.log('error', `Sign Message failed! ${error?.message}`);
-    }
+    if (!publicKey) throw new Error('Wallet not connected!');
+    if (!signMessage)
+      throw new Error('Wallet does not support message signing!');
+    const message = new TextEncoder().encode(nonce);
+    const signature = await signMessage(message);
+    const encodedSignature = bs58.encode(signature);
+    if (!verify(signature, message, publicKey.toBytes()))
+      throw new Error('Invalid signature!');
+    notify({
+      type: 'success',
+      message: 'Message signed successfully!',
+      txid: encodedSignature,
+    });
+    return { nonce, signature: encodedSignature };
   }, [publicKey, signMessage]);
 
   const handleViewDataClick = async (nft) => {
-    const { nonce, signature } = await signPreaccess();
-    const assetId = nft.id;
-    const address = publicKey;
-    if (!nonce || !signature || !assetId || !address) return;
-    itheumViewDataInNewTab(assetId, nonce, signature, address);
+    try {
+      const { nonce, signature } = await signPreaccess();
+      const assetId = nft.id;
+      const address = publicKey;
+      if (!nonce || !signature || !assetId || !address) return;
+      itheumViewDataInNewTab(assetId, nonce, signature, address);
+    } catch (e) {
+      notify({
+        type: 'error',
+        message: 'View Data failed!',
+        description: e?.message,
+      });
+      console.log('error', `View data failed! ${e?.message}`);
+    }
   };
 
   return (

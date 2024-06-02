@@ -70,6 +70,7 @@ import useUserBitzStore from 'stores/useUserBitzStore';
 import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import { notify } from 'utils/notifications';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
+import { set } from 'date-fns';
 
 export interface LeaderBoardItemType {
   playerAddr: string;
@@ -126,6 +127,7 @@ const GetBitzView = () => {
   const bitzBalance = bitzStore.bitzBalance;
   const collectedBitzSum = bitzStore.collectedBitzSum;
   const givenBitzSum = bitzStore.givenBitzSum;
+  const bonusTries = bitzStore.bonusTries;
 
   // a single game-play related (so we have to reset these if the user wants to "replay")
   const [isFetchingDataMarshal, setIsFetchingDataMarshal] =
@@ -140,6 +142,7 @@ const GetBitzView = () => {
   const [burnFireGlow, setBurnFireGlow] = useState<number>(0);
   const [burnProgress, setBurnProgress] = useState(0);
   const [randomMeme, setRandomMeme] = useState<any>(Meme1.src);
+  const [populatedBitzStore, setPopulatedBitzStore] = useState<boolean>(false);
   const tweetText = `url=https://explorer.itheum.io/getbitz?v=2&text=${viewDataRes?.data.gamePlayResult.bitsWon > 0 ? 'I just played the Get <BiTz> XP Game on %23itheum and won ' + viewDataRes?.data.gamePlayResult.bitsWon + ' <BiTz> points 🙌!%0A%0APlay now and get your own <BiTz>! %23GetBiTz' : 'Oh no, I got rugged getting <BiTz> points this time. Maybe you will have better luck?%0A%0ATry here to %23GetBiTz %23itheum %0A'}`;
   ///TODO add ?r=${address}
   const [usingReferralCode, setUsingReferralCode] = useState<string>('');
@@ -172,14 +175,15 @@ const GetBitzView = () => {
     if (publicKey) {
       getUserDataNfts(publicKey);
     }
-  }, [publicKey, getUserDataNfts]);
+  }, [publicKey]);
 
   useEffect(() => {
-    if (publicKey && nfts.length > 0) {
+    if (publicKey && nfts.length > 0 && !populatedBitzStore) {
       bitzStore.updateBitzBalance(-2);
       bitzStore.updateCooldown(-2);
       bitzStore.updateGivenBitzSum(-2);
       bitzStore.updateCollectedBitzSum(-2);
+      setPopulatedBitzStore(true);
 
       const viewDataArgs = {
         headers: {
@@ -259,7 +263,7 @@ const GetBitzView = () => {
 
     // Load the LeaderBoards regardless on if the user has does not have the data nft in to entice them
     fetchAndLoadLeaderBoards();
-  }, []);
+  }, [nfts]);
 
   useEffect(() => {
     setBurnFireScale(`scale(${burnProgress}) translate(-13px, -15px)`);
