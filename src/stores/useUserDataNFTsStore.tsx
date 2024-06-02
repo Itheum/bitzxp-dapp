@@ -1,5 +1,7 @@
 import create from 'zustand';
 import { Connection, PublicKey } from '@solana/web3.js';
+import { notify } from 'utils/notifications';
+import { DATA_NFT_COLLECTION_ID } from 'config';
 
 interface UserDataNFTsStore {
   nfts: any[];
@@ -11,7 +13,6 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
   getUserDataNfts: async (publicKey) => {
     let nfts = [];
     try {
-      console.log(process.env.NEXT_PUBLIC_HELIUS_API_KEY);
       const resp = await fetch(
         `https://devnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`,
         {
@@ -32,13 +33,21 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
         },
       );
       const data = await resp.json();
-      nfts = data.result.items;
+      nfts = data.result.items.filter(
+        (nft) =>
+          nft.grouping.find((g) => g.group_key === 'collection').group_value ===
+          DATA_NFT_COLLECTION_ID,
+      );
     } catch (e) {
-      console.log(`error getting nfts: `, e);
+      notify({
+        type: 'error',
+        message: 'User owned NFTs fetch failed',
+        description: (e as Error).message,
+      });
     }
     set((s) => {
+      console.log(nfts);
       s.nfts = nfts;
-      console.log(`nfts updated, `, nfts);
     });
   },
 }));

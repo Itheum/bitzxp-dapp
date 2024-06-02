@@ -1,5 +1,6 @@
 import create from 'zustand';
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { notify } from 'utils/notifications';
 
 interface UserSOLBalanceStore {
   balance: number;
@@ -14,11 +15,14 @@ const useUserSOLBalanceStore = create<UserSOLBalanceStore>((set, _get) => ({
       balance = await connection.getBalance(publicKey, 'confirmed');
       balance = balance / LAMPORTS_PER_SOL;
     } catch (e) {
-      console.log(`error getting balance: `, e);
+      notify({
+        type: 'error',
+        message: 'User SOL balance fetch failed',
+        description: (e as Error).message,
+      });
     }
     set((s) => {
       s.balance = balance;
-      console.log(`balance updated, `, balance);
     });
   },
 }));

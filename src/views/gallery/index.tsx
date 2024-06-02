@@ -2,7 +2,7 @@ import { FC, useCallback, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import Image from 'next/image';
-import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
+import { itheumPreaccess, itheumViewDataInNewTab } from 'utils/ItheumViewData';
 import { verify } from '@noble/ed25519';
 import { notify } from '../../utils/notifications';
 import bs58 from 'bs58';
@@ -51,13 +51,7 @@ export const GalleryView: FC = ({}) => {
     const assetId = nft.id;
     const address = publicKey;
     if (!nonce || !signature || !assetId || !address) return;
-    console.log('View Data', {
-      assetId,
-      nonce,
-      signature,
-      address: address.toBase58(),
-    });
-    itheumViewData(assetId, nonce, signature, address);
+    itheumViewDataInNewTab(assetId, nonce, signature, address);
   };
 
   return (

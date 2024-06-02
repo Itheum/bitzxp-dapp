@@ -42,6 +42,11 @@ export const AppBar: React.FC = () => {
               href="/gallery"
               navigationStarts={() => setIsNavOpen(false)}
             />
+            <NavElement
+              label="Bitz"
+              href="/getbitz"
+              navigationStarts={() => setIsNavOpen(false)}
+            />
           </div>
           <label
             htmlFor="my-drawer"
