@@ -1,7 +1,6 @@
 import { FC, useCallback, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
-import Image from 'next/image';
 import { itheumPreaccess, itheumViewDataInNewTab } from 'utils/ItheumViewData';
 import { verify } from '@noble/ed25519';
 import { notify } from '../../utils/notifications';
@@ -67,7 +66,7 @@ export const GalleryView: FC = ({}) => {
               key={idx}
               className=" mx-5 flex flex-col p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
-              <Image
+              <img
                 src={
                   nft.content.files[0]?.uri ??
                   'https://devnet-explorer.multiversx.com/assets/img/default.png'

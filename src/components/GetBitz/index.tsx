@@ -53,7 +53,6 @@ import Meme9 from '../../../public/getbitz/memes/9.jpg';
 import resultLoading from '../../../public/getbitz/pixel-loading.gif';
 import LeaderBoardTable from './LeaderBoardTable';
 
-import Image from 'next/image';
 import { cn } from 'utils';
 import { useWallet } from '@solana/wallet-adapter-react';
 import {
@@ -492,9 +491,9 @@ const GetBitzView = () => {
     ) {
       return (
         <div className="relative">
-          <Image
+          <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
-            src={ImgLoadingGame}
+            src={ImgLoadingGame.src}
             alt={'Checking if you have <BiTz> Data NFT'}
           />
         </div>
@@ -505,9 +504,9 @@ const GetBitzView = () => {
     if (address && !checkingIfHasGameDataNFT && !hasGameDataNFT) {
       return (
         <div className="relative" onClick={() => {}}>
-          <Image
+          <img
             className="z-5 rounded-[3rem] w-full cursor-pointer"
-            src={ImgGetDataNFT}
+            src={ImgGetDataNFT.src}
             alt={'Get <BiTz> Data NFT from Data NFT Marketplace'}
           />
         </div>
@@ -595,12 +594,12 @@ const GetBitzView = () => {
               }}
             />
           )}
-          <Image
+          <img
             onClick={() => {
               setLoadBlankGameCanvas(true);
             }}
             className="rounded-[3rem] w-full cursor-pointer"
-            src={ImgPlayGame}
+            src={ImgPlayGame.src}
             alt={'Start Game'}
           />
         </div>
@@ -612,12 +611,12 @@ const GetBitzView = () => {
       return (
         <div className="relative overflow-hidden">
           {_isMemeBurnHappening && <Torch />}
-          <Image
+          <img
             className={cn(
               'rounded-[3rem] w-full',
               _isMemeBurnHappening ? 'cursor-none' : '',
             )}
-            src={ImgGameCanvas}
+            src={ImgGameCanvas.src}
             alt={'Play Game'}
           />
 
@@ -647,9 +646,9 @@ const GetBitzView = () => {
                   <p className="font-bold mt-2 lg:mt-5">
                     Click here when you are ready...
                   </p>
-                  <Image
+                  <img
                     className="w-[40px] m-auto"
-                    src={FingerPoint}
+                    src={FingerPoint.src}
                     alt={'Click to Start'}
                   />{' '}
                 </div>
@@ -688,9 +687,9 @@ const GetBitzView = () => {
                 <p className="text-gray-950 text-sm text-center mb-[1rem]">
                   Hang tight, result incoming
                 </p>
-                <Image
+                <img
                   className="w-[160px] lg:w-[230px] m-auto"
-                  src={resultLoading}
+                  src={resultLoading.src}
                   alt={'Result loading'}
                 />{' '}
               </div>
@@ -706,9 +705,9 @@ const GetBitzView = () => {
     if (_loadBlankGameCanvas && !_isFetchingDataMarshal && _gameDataFetched) {
       return (
         <div className="relative overflow-hidden">
-          <Image
+          <img
             className="rounded-[3rem] w-full cursor-pointer"
-            src={ImgGameCanvas}
+            src={ImgGameCanvas.src}
             alt={'Get <BiTz> Points'}
           />
           <div
@@ -1054,9 +1053,9 @@ const GetBitzView = () => {
           </motion.div>
         </div>
         <div className="absolute -z-1 w-full">
-          <Image
+          <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
-            src={ImgLoadingGame}
+            src={ImgLoadingGame.src}
             alt={'Checking if you have <BiTz> Data NFT'}
           />
         </div>

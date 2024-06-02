@@ -4,7 +4,6 @@ import moment from 'moment-timezone';
 import stampFinalized from '../../../../public/getbitz/givebitz/stampFinalized.png';
 import GiveBitzLowerCard from './GiveBitzLowerCard';
 import { GiveBitzDataBounty } from '../config';
-import Image from 'next/image';
 import Link from 'next/link';
 import { SolAddressLink } from 'components/SolAddressLink';
 import { cn } from 'utils';
@@ -109,8 +108,8 @@ const PowerUpBounty = (props: PowerUpBountyProps) => {
               </div>
               {address && finalizedDataNftIdentifier ? (
                 <div className="h-[21rem]">
-                  <Image
-                    src={stampFinalized}
+                  <img
+                    src={stampFinalized.src}
                     alt="Finalized"
                     className="w-40 mx-auto"
                   />

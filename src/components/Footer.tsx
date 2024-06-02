@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 export const Footer: FC = () => {
   return (
     <div className="flex">
@@ -17,7 +16,7 @@ export const Footer: FC = () => {
                   className="text-secondary hover:text-white"
                 >
                   <div className="flex flex-row ml-1">
-                    <Image
+                    <img
                       src="/solanaLogo.png"
                       alt="solana icon"
                       width={156}

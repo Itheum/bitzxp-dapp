@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import clickHere from '../../../public/getbitz/click-here.gif';
-import Image from 'next/image';
 
 export const BurningImage: React.FC<{ src: string; burnProgress: number }> = ({
   src,
@@ -42,7 +41,11 @@ export const BurningImage: React.FC<{ src: string; burnProgress: number }> = ({
       />{' '}
       {burnProgress < 3 && (
         <div className="absolute -mt-32 bottom-16 -ml-24 ">
-          <Image src={clickHere} className="w-32 h-32 z-10 " alt="Click Here" />
+          <img
+            src={clickHere.src}
+            className="w-32 h-32 z-10 "
+            alt="Click Here"
+          />
         </div>
       )}
     </div>

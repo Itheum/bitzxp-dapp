@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import torch from '../../../public/getbitz/torch.webp';
-import Image from 'next/image';
 
 const Torch: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -30,8 +29,8 @@ const Torch: React.FC = () => {
   }, []);
 
   return (
-    <Image
-      src={torch}
+    <img
+      src={torch.src}
       className="w-16 h-32 z-[30] absolute -ml-[50px] md:-ml-[100px] xl:-ml-[150px] -mt-[60px]"
       style={{ left: position.x, top: position.y }}
       alt="torch"
