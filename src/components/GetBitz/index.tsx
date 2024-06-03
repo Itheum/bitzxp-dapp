@@ -489,12 +489,13 @@ const GetBitzView = () => {
     let _isMemeBurnHappening = isMemeBurnHappening;
 
     // user is logged in and we are checking if they have the data nft to proceed with a play
+    console.log(address, checkingIfHasGameDataNFT, hasGameDataNFT, cooldown);
     if (
       (address && checkingIfHasGameDataNFT && !hasGameDataNFT) ||
       cooldown === -2
     ) {
       return (
-        <div className="relative">
+        <div className="relative w-full">
           <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
             src={ImgLoadingGame.src}

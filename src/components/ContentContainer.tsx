@@ -8,9 +8,9 @@ interface Props {
 
 export const ContentContainer: React.FC<Props> = ({ children }) => {
   return (
-    <div className="flex-1 drawer h-[60%] flex-col justify-between">
-      {/*<input id="my-drawer" type="checkbox" className="grow drawer-toggle" />*/}
-      <div className="items-center flex flex-col justify-between md:overflow-y-hidden">
+    <div className="flex-1 drawer h-52 flex-col justify-between">
+      {/* <input id="my-drawer" type="checkbox" className="grow drawer-toggle" /> */}
+      <div className="items-center flex flex-col justify-between">
         {children}
       </div>
       {/* SideBar / Drawer */}

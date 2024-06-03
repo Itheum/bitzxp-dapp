@@ -101,7 +101,7 @@ export const AppBar: React.FC = () => {
             </div>
             <ul
               tabIndex={0}
-              className="p-2 shadow menu dropdown-content bg-base-100 rounded-box"
+              className="p-2 shadow menu dropdown-content bg-base-100 rounded-box sm:max-w-[30svh]"
             >
               <li>
                 <div className="flex flex-col bg-opacity-100">
