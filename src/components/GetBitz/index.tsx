@@ -126,8 +126,11 @@ const GetBitzView = () => {
   const cooldown = bitzStore.cooldown;
   const bitzBalance = bitzStore.bitzBalance;
   const collectedBitzSum = bitzStore.collectedBitzSum;
-  const givenBitzSum = bitzStore.givenBitzSum;
-  const bonusTries = bitzStore.bonusTries;
+  const updateBitzBalance = bitzStore.updateBitzBalance;
+  const updateCooldown = bitzStore.updateCooldown;
+  const updateCollectedBitzSum = bitzStore.updateCollectedBitzSum;
+  const updateGivenBitzSum = bitzStore.updateGivenBitzSum;
+  const updateBonusTries = bitzStore.updateBonusTries;
 
   // a single game-play related (so we have to reset these if the user wants to "replay")
   const [isFetchingDataMarshal, setIsFetchingDataMarshal] =
@@ -178,61 +181,64 @@ const GetBitzView = () => {
   }, [publicKey]);
 
   useEffect(() => {
-    if (publicKey && nfts.length > 0 && !populatedBitzStore) {
-      bitzStore.updateBitzBalance(-2);
-      bitzStore.updateCooldown(-2);
-      bitzStore.updateGivenBitzSum(-2);
-      bitzStore.updateCollectedBitzSum(-2);
-      setPopulatedBitzStore(true);
+    if (!populatedBitzStore) {
+      if (publicKey && nfts.length > 0) {
+        updateBitzBalance(-2);
+        updateCooldown(-2);
+        updateGivenBitzSum(-2);
+        updateCollectedBitzSum(-2);
+        setPopulatedBitzStore(true);
 
-      const viewDataArgs = {
-        headers: {
-          fwdHeaderMapLookup: {
-            'dmf-custom-only-state': '1',
+        const viewDataArgs = {
+          headers: {
+            fwdHeaderMapLookup: {
+              'dmf-custom-only-state': '1',
+            },
+            fwdHeaderKeys: 'dmf-custom-only-state',
           },
-          fwdHeaderKeys: 'dmf-custom-only-state',
-        },
-      };
-      (async () => {
-        const getBitzGameResult = await viewData(viewDataArgs, nfts[0]);
-        if (getBitzGameResult) {
-          const sumGivenBits =
-            getBitzGameResult.data?.bitsMain?.bitsGivenSum || 0;
+        };
+        (async () => {
+          const getBitzGameResult = await viewData(viewDataArgs, nfts[0]);
+          if (getBitzGameResult) {
+            const sumGivenBits =
+              getBitzGameResult.data?.bitsMain?.bitsGivenSum || 0;
 
-          if (sumGivenBits > 0) {
-            bitzStore.updateBitzBalance(
-              getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay -
-                sumGivenBits,
-            ); // collected bits - given bits
-            bitzStore.updateGivenBitzSum(sumGivenBits); // given bits -- for power-ups
-          } else {
-            bitzStore.updateBitzBalance(
+            if (sumGivenBits > 0) {
+              updateBitzBalance(
+                getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay -
+                  sumGivenBits,
+              ); // collected bits - given bits
+              updateGivenBitzSum(sumGivenBits); // given bits -- for power-ups
+            } else {
+              updateBitzBalance(
+                getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay,
+              ); // collected bits - not given bits yet
+              updateGivenBitzSum(0); // given bits - not given bits yet
+            }
+
+            updateCooldown(
+              computeRemainingCooldown(
+                getBitzGameResult.data.gamePlayResult.lastPlayedBeforeThisPlay,
+                getBitzGameResult.data.gamePlayResult.configCanPlayEveryMSecs,
+              ),
+            );
+
+            updateCollectedBitzSum(
               getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay,
-            ); // collected bits - not given bits yet
-            bitzStore.updateGivenBitzSum(0); // given bits - not given bits yet
+            ); // collected bits by playing
+
+            updateBonusTries(
+              getBitzGameResult.data.gamePlayResult.bonusTriesBeforeThisPlay ||
+                0,
+            ); // bonus tries awarded to user (currently only via referral code rewards)
           }
-
-          bitzStore.updateCooldown(
-            computeRemainingCooldown(
-              getBitzGameResult.data.gamePlayResult.lastPlayedBeforeThisPlay,
-              getBitzGameResult.data.gamePlayResult.configCanPlayEveryMSecs,
-            ),
-          );
-
-          bitzStore.updateCollectedBitzSum(
-            getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay,
-          ); // collected bits by playing
-
-          bitzStore.updateBonusTries(
-            getBitzGameResult.data.gamePlayResult.bonusTriesBeforeThisPlay || 0,
-          ); // bonus tries awarded to user (currently only via referral code rewards)
-        }
-      })();
-    } else {
-      bitzStore.updateBitzBalance(-1);
-      bitzStore.updateGivenBitzSum(-1);
-      bitzStore.updateCooldown(-1);
-      bitzStore.updateCollectedBitzSum(-1);
+        })();
+      } else {
+        updateBitzBalance(-1);
+        updateGivenBitzSum(-1);
+        updateCooldown(-1);
+        updateCollectedBitzSum(-1);
+      }
     }
   }, [publicKey, nfts]);
 
@@ -242,10 +248,6 @@ const GetBitzView = () => {
     }, 3000);
 
     return () => clearTimeout(timeout);
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -373,7 +375,7 @@ const GetBitzView = () => {
       setGameDataFetched(true);
       setIsFetchingDataMarshal(false);
       setViewDataRes(viewDataPayload);
-      bitzStore.updateCooldown(
+      updateCooldown(
         computeRemainingCooldown(
           Math.max(
             viewDataPayload.data.gamePlayResult.lastPlayedAndCommitted,
@@ -385,40 +387,40 @@ const GetBitzView = () => {
       const sumGivenBits = viewDataPayload.data?.bitsMain?.bitsGivenSum || 0;
       if (viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay > -1) {
         if (sumGivenBits > 0) {
-          bitzStore.updateBitzBalance(
+          updateBitzBalance(
             viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay -
               sumGivenBits,
           ); // won some bis, minus given bits and show
         } else {
-          bitzStore.updateBitzBalance(
+          updateBitzBalance(
             viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay,
           ); // won some bis, not given anything yet
         }
-        bitzStore.updateCollectedBitzSum(
+        updateCollectedBitzSum(
           viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay,
         );
       } else {
         if (sumGivenBits > 0) {
-          bitzStore.updateBitzBalance(
+          updateBitzBalance(
             viewDataPayload.data.gamePlayResult.bitsScoreBeforePlay -
               sumGivenBits,
           ); // did not win bits, minus given bits from current and show
         } else {
-          bitzStore.updateBitzBalance(
+          updateBitzBalance(
             viewDataPayload.data.gamePlayResult.bitsScoreBeforePlay,
           ); // did not win bits, not given anything yet
         }
-        bitzStore.updateCollectedBitzSum(
+        updateCollectedBitzSum(
           viewDataPayload.data.gamePlayResult.bitsScoreBeforePlay,
         );
       }
       // how many bonus tries does the user have
       if (viewDataPayload.data.gamePlayResult.bonusTriesAfterThisPlay > -1) {
-        bitzStore.updateBonusTries(
+        updateBonusTries(
           viewDataPayload.data.gamePlayResult.bonusTriesAfterThisPlay,
         );
       } else {
-        bitzStore.updateBonusTries(
+        updateBonusTries(
           viewDataPayload.data.gamePlayResult.bonusTriesBeforeThisPlay || 0,
         );
       }
