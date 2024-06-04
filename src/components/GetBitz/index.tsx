@@ -497,12 +497,12 @@ const GetBitzView = () => {
       cooldown === -2
     ) {
       return (
-        <div className="relative w-full">
-          <img
+        <div className="relative">
+          {/* <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
             src={ImgLoadingGame.src}
             alt={'Checking if you have <BiTz> Data NFT'}
-          />
+          /> */}
         </div>
       );
     }
@@ -511,11 +511,11 @@ const GetBitzView = () => {
     if (address && !checkingIfHasGameDataNFT && !hasGameDataNFT) {
       return (
         <div className="relative" onClick={() => {}}>
-          <img
+          {/* <img
             className="z-5 rounded-[3rem] w-full cursor-pointer"
             src={ImgGetDataNFT.src}
             alt={'Get <BiTz> Data NFT from Data NFT Marketplace'}
-          />
+          /> */}
         </div>
       );
     }
@@ -601,14 +601,14 @@ const GetBitzView = () => {
               }}
             />
           )}
-          <img
+          {/* <img
             onClick={() => {
               setLoadBlankGameCanvas(true);
             }}
             className="rounded-[3rem] w-full cursor-pointer"
             src={ImgPlayGame.src}
             alt={'Start Game'}
-          />
+          /> */}
         </div>
       );
     }
@@ -618,18 +618,18 @@ const GetBitzView = () => {
       return (
         <div className="relative overflow-hidden">
           {_isMemeBurnHappening && <Torch />}
-          <img
+          {/* <img
             className={cn(
               'rounded-[3rem] w-full',
               _isMemeBurnHappening ? 'cursor-none' : '',
             )}
             src={ImgGameCanvas.src}
             alt={'Play Game'}
-          />
+          /> */}
 
           <div
             className={cn(
-              'select-none flex justify-center items-center mt-[2rem]  w-[100%] h-[350px] md:h-[400px] rounded-[3rem] bg-slate-50 text-gray-950 p-[2rem] border border-primary/50 static lg:absolute lg:pb-[.5rem] lg:w-[500px] lg:h-[420px] lg:mt-0 lg:top-[40%] lg:left-[50%] lg:-translate-x-1/2 lg:-translate-y-1/2',
+              'select-none flex justify-center items-center mt-[2rem]  w-full h-[350px] md:h-[400px] rounded-[3rem] bg-slate-50 text-gray-950 p-[2rem] border border-primary/50 static lg:absolute lg:pb-[.5rem] lg:w-[500px] lg:h-[420px] lg:mt-0 lg:top-[40%] lg:left-[50%] lg:-translate-x-1/2 lg:-translate-y-1/2',
               _isMemeBurnHappening ? 'cursor-none' : '',
             )}
           >
@@ -712,11 +712,11 @@ const GetBitzView = () => {
     if (_loadBlankGameCanvas && !_isFetchingDataMarshal && _gameDataFetched) {
       return (
         <div className="relative overflow-hidden">
-          <img
+          {/* <img
             className="rounded-[3rem] w-full cursor-pointer"
             src={ImgGameCanvas.src}
             alt={'Get <BiTz> Points'}
-          />
+          /> */}
           <div
             className="flex justify-center items-center mt-[2rem] w-[100%] h-[350px] rounded-[3rem] bg-slate-50 text-gray-950 p-[1rem] border border-primary/50 static
                         lg:absolute lg:p-[2rem] lg:pb-[.5rem] lg:w-[500px] lg:h-[400px] lg:mt-0 lg:top-[40%] lg:left-[50%] lg:-translate-x-1/2 lg:-translate-y-1/2"
@@ -1059,17 +1059,17 @@ const GetBitzView = () => {
             )}
           </motion.div>
         </div>
-        <div className="absolute -z-1 w-full">
-          <img
+        <div className="absolute -z-1">
+          {/* <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
             src={ImgLoadingGame.src}
             alt={'Checking if you have <BiTz> Data NFT'}
-          />
+          /> */}
         </div>
         {gamePlayImageSprites()}
       </div>
 
-      <div className="p-5 text-lg font-bold border border-[#35d9fa] rounded-[1rem] mt-[3rem] ">
+      <div className="p-5 text-lg font-bold border border-[#35d9fa] rounded-[1rem] mt-[3rem] max-w-[100%]">
         <h2 className="text-center text-white mb-[1rem]">Get BiTz Perks</h2>
 
         <ol className="mt-5">
