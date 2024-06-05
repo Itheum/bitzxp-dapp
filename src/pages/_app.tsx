@@ -20,7 +20,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <ContextProvider>
-        <div className="flex flex-col h-[100svh]">
+        <div className="flex flex-col flex-auto min-h-[100dvh]">
           <Notifications />
           <AppBar />
           <ContentContainer>

@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import { confetti } from '@tsparticles/confetti';
 import { Container } from '@tsparticles/engine';
@@ -191,11 +192,9 @@ const GetBitzView = () => {
 
         const viewDataArgs = {
           headers: {
-            fwdHeaderMapLookup: {
-              'dmf-custom-only-state': '1',
-            },
-            fwdHeaderKeys: 'dmf-custom-only-state',
+            'dmf-custom-only-state': '1',
           },
+          fwdHeaderKeys: ['dmf-custom-only-state'],
         };
         (async () => {
           const getBitzGameResult = await viewData(viewDataArgs, nfts[0]);
@@ -319,17 +318,14 @@ const GetBitzView = () => {
   async function playGame() {
     setIsFetchingDataMarshal(true);
     await sleep(5);
-    const _fwdHeaderMapLookup: Record<string, string> = {};
-    let _fwdHeaderKeys = '';
-    if (usingReferralCode !== '') {
-      _fwdHeaderMapLookup['dmf-referral-code'] = usingReferralCode;
-      _fwdHeaderKeys = 'dmf-referral-code';
-    }
     const viewDataArgs: Record<string, any> = {
-      mvxNativeAuthMaxExpirySeconds: 3600,
-      fwdHeaderMapLookup: _fwdHeaderMapLookup,
-      fwdHeaderKeys: _fwdHeaderKeys,
+      headers: {},
+      fwdHeaderKeys: [],
     };
+    if (usingReferralCode !== '') {
+      viewDataArgs.headers['dmf-referral-code'] = usingReferralCode;
+      viewDataArgs.fwdHeaderKeys.push('dmf-referral-code');
+    }
     const viewDataPayload: ExtendedViewDataReturnType | undefined =
       await viewData(viewDataArgs, nfts[0]);
     if (viewDataPayload) {
@@ -454,7 +450,8 @@ const GetBitzView = () => {
         preAccessNonce,
         encodedSignature,
         publicKey,
-        viewDataArgs,
+        viewDataArgs.fwdHeaderKeys,
+        viewDataArgs.headers,
       );
       let blobDataType = BlobDataType.TEXT;
       let data;
@@ -463,7 +460,6 @@ const GetBitzView = () => {
         if (contentType.includes('application/json')) {
           data = await res.json();
         }
-        console.log(res);
         return { data, blobDataType, contentType };
       } else {
         console.log('viewData threw catch error');
@@ -498,11 +494,11 @@ const GetBitzView = () => {
     ) {
       return (
         <div className="relative">
-          {/* <img
+          <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
             src={ImgLoadingGame.src}
             alt={'Checking if you have <BiTz> Data NFT'}
-          /> */}
+          />
         </div>
       );
     }
@@ -511,11 +507,11 @@ const GetBitzView = () => {
     if (address && !checkingIfHasGameDataNFT && !hasGameDataNFT) {
       return (
         <div className="relative" onClick={() => {}}>
-          {/* <img
+          <img
             className="z-5 rounded-[3rem] w-full cursor-pointer"
             src={ImgGetDataNFT.src}
             alt={'Get <BiTz> Data NFT from Data NFT Marketplace'}
-          /> */}
+          />
         </div>
       );
     }
@@ -601,14 +597,14 @@ const GetBitzView = () => {
               }}
             />
           )}
-          {/* <img
+          <img
             onClick={() => {
               setLoadBlankGameCanvas(true);
             }}
             className="rounded-[3rem] w-full cursor-pointer"
             src={ImgPlayGame.src}
             alt={'Start Game'}
-          /> */}
+          />
         </div>
       );
     }
@@ -618,14 +614,14 @@ const GetBitzView = () => {
       return (
         <div className="relative overflow-hidden">
           {_isMemeBurnHappening && <Torch />}
-          {/* <img
+          <img
             className={cn(
               'rounded-[3rem] w-full',
               _isMemeBurnHappening ? 'cursor-none' : '',
             )}
             src={ImgGameCanvas.src}
             alt={'Play Game'}
-          /> */}
+          />
 
           <div
             className={cn(
@@ -657,7 +653,7 @@ const GetBitzView = () => {
                     className="w-[40px] m-auto"
                     src={FingerPoint.src}
                     alt={'Click to Start'}
-                  />{' '}
+                  />
                 </div>
               </>
             )) ||
@@ -698,7 +694,7 @@ const GetBitzView = () => {
                   className="w-[160px] lg:w-[230px] m-auto"
                   src={resultLoading.src}
                   alt={'Result loading'}
-                />{' '}
+                />
               </div>
             )}
           </div>
@@ -712,11 +708,11 @@ const GetBitzView = () => {
     if (_loadBlankGameCanvas && !_isFetchingDataMarshal && _gameDataFetched) {
       return (
         <div className="relative overflow-hidden">
-          {/* <img
+          <img
             className="rounded-[3rem] w-full cursor-pointer"
             src={ImgGameCanvas.src}
             alt={'Get <BiTz> Points'}
-          /> */}
+          />
           <div
             className="flex justify-center items-center mt-[2rem] w-[100%] h-[350px] rounded-[3rem] bg-slate-50 text-gray-950 p-[1rem] border border-primary/50 static
                         lg:absolute lg:p-[2rem] lg:pb-[.5rem] lg:w-[500px] lg:h-[400px] lg:mt-0 lg:top-[40%] lg:left-[50%] lg:-translate-x-1/2 lg:-translate-y-1/2"
@@ -1035,7 +1031,7 @@ const GetBitzView = () => {
   }
 
   return (
-    <>
+    <div>
       {usingReferralCode !== '' && (
         <div className="p-1 text-lg font-bold border border-[#35d9fa] rounded-[1rem] mb-[1rem] text-center">
           You are playing with referral code {usingReferralCode}
@@ -1060,11 +1056,11 @@ const GetBitzView = () => {
           </motion.div>
         </div>
         <div className="absolute -z-1">
-          {/* <img
+          <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
             src={ImgLoadingGame.src}
             alt={'Checking if you have <BiTz> Data NFT'}
-          /> */}
+          />
         </div>
         {gamePlayImageSprites()}
       </div>
@@ -1190,7 +1186,7 @@ const GetBitzView = () => {
       {leaderBoardAllTime.length > 0 && <GiveBitzBase />}
 
       <Faq />
-    </>
+    </div>
   );
 };
 

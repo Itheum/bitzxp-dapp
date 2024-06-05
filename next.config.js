@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const { version } = require('./package.json');
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -20,6 +22,9 @@ const nextConfig = {
         pathname: '**',
       },
     ],
+  },
+  publicRuntimeConfig: {
+    version,
   },
 };
 

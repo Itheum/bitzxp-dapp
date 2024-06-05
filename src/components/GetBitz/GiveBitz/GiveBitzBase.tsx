@@ -159,7 +159,6 @@ const GiveBitzBase = () => {
       },
     };
     try {
-      console.log('AXIOS CALL -----> xpGamePrivate/getterBitSumAndGiverCounts');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/getterBitSumAndGiverCounts?getterAddr=${getterAddr}&campaignId=${campaignId}`,
         callConfig,
@@ -281,14 +280,18 @@ const GiveBitzBase = () => {
   }) {
     try {
       const viewDataArgs = {
-        fwdHeaderMapLookup: {
+        headers: {
           'dmf-custom-give-bits': '1',
           'dmf-custom-give-bits-val': bitsVal,
           'dmf-custom-give-bits-to-who': bitsToWho,
           'dmf-custom-give-bits-to-campaign-id': bitsToCampaignId,
         },
-        fwdHeaderKeys:
-          'dmf-custom-give-bits, dmf-custom-give-bits-val, dmf-custom-give-bits-to-who, dmf-custom-give-bits-to-campaign-id',
+        fwdHeaderKeys: [
+          'dmf-custom-give-bits',
+          'dmf-custom-give-bits-val',
+          'dmf-custom-give-bits-to-who',
+          'dmf-custom-give-bits-to-campaign-id',
+        ],
       };
       const giveBitzGameResult = await viewData(viewDataArgs, nfts[0]);
       if (giveBitzGameResult) {
@@ -336,7 +339,8 @@ const GiveBitzBase = () => {
         preAccessNonce,
         encodedSignature,
         publicKey,
-        viewDataArgs,
+        viewDataArgs.fwdHeaderKeys,
+        viewDataArgs.headers,
       );
       let blobDataType = BlobDataType.TEXT;
       let data;
@@ -413,10 +417,7 @@ const GiveBitzBase = () => {
         )}
       </div>
 
-      <div
-        id="bounties"
-        className="flex flex-col w-full items-center justify-center"
-      >
+      <div id="bounties" className="flex flex-col items-center justify-center">
         <div className="flex flex-col mt-10 mb-8 items-center justify-center ">
           <div className="flex flex-col md:flex-row items-center justify-center ">
             <span className="text-foreground text-4xl mb-2 text-center">
@@ -439,9 +440,9 @@ const GiveBitzBase = () => {
         </div>
 
         <div
-          className="flex flex-col md:flex-row md:flex-wrap gap-4 items-center md:items-start justify-center md:justify-start w-full antialiased pt-4 relative h-[100%] "
+          className="flex flex-col md:flex-row md:flex-wrap gap-4 items-center md:items-center justify-center md:justify-center md:max-w-[60%] w-full antialiased pt-4 relative h-[100%]"
           style={{
-            backgroundImage: `url(${bounty})`,
+            backgroundImage: `url(${bounty.src})`,
             objectFit: 'scale-down',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',

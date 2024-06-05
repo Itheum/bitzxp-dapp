@@ -8,6 +8,8 @@ interface Props {
 
 export const ContentContainer: React.FC<Props> = ({ children }) => {
   return (
-    <div className="items-center flex flex-col justify-between">{children}</div>
+    <div className="items-center flex flex-col justify-between grow">
+      {children}
+    </div>
   );
 };
