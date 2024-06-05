@@ -21,6 +21,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           content="Explore Itheum's Get Bitz XP application on Solana network."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
       </Head>
 
       <ContextProvider>
