@@ -6,7 +6,6 @@ import { AppBar } from '../components/AppBar';
 import { ContentContainer } from '../components/ContentContainer';
 import { Footer } from '../components/Footer';
 import Notifications from '../components/Notification';
-import useUserBitzStore from 'stores/useUserBitzStore';
 require('@solana/wallet-adapter-react-ui/styles.css');
 require('../styles/globals.css');
 require('../styles/GetBitz.css');
@@ -16,7 +15,12 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Itheum Get Bitz</title>
+        <title>Itheum Get Bitz XP</title>
+        <meta
+          name="description"
+          content="Explore Itheum's Get Bitz XP application on Solana network."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <ContextProvider>

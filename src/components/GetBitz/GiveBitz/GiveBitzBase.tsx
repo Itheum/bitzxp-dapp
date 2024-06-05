@@ -199,7 +199,7 @@ const GiveBitzBase = () => {
         callConfig,
       );
       const data = await res.json();
-      return data.bits ? parseInt(data.bits, 10) : -2;
+      return data.bits !== undefined ? data.bits : 0;
     } catch (err) {
       const message =
         'Getting my rank on the all time leaderboard failed:' + err.message;
@@ -278,6 +278,13 @@ const GiveBitzBase = () => {
     bitsToCampaignId: string;
     isNewGiver: number;
   }) {
+    console.log(
+      'sendPowerUp',
+      bitsVal,
+      bitsToWho,
+      bitsToCampaignId,
+      isNewGiver,
+    );
     try {
       const viewDataArgs = {
         headers: {

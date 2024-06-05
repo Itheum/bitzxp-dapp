@@ -18,15 +18,26 @@ export const AppBar: React.FC = () => {
   return (
     <div>
       {/* NavBar / Header */}
-      <div className="flex h-20 flex-row md:mb-2 shadow-lg bg-black text-neutral-content border-b border-zinc-600 bg-opacity-66 justify-between">
+      <div className="flex h-20 flex-row md:mb-4 bg-black text-neutral-content bg-opacity-11 justify-between">
         <div className="flex flex-row justify-around align-center">
+          <div className="flex justify-center items-center content-center ml-4">
+            <img
+              src="/itheumLogo.png"
+              alt="Itheum Logo"
+              className="w-12 h-12"
+            />
+          </div>
+          <div className="flex flex-col justify-center items-center content-center ml-4">
+            <h4>Get</h4>
+            <h4>Bitz XP</h4>
+          </div>
           <div className="ml-6 flex gap-2 items-center">
             <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg " />
           </div>
-          <div className="dropdown dropdown-end z-50 self-center">
+          <div className="dropdown dropdown-end z-50 self-center m-1">
             <div
               tabIndex={0}
-              className="btn btn-square btn-ghost text-right mr-4"
+              className="btn btn-square btn-ghost text-right mx-3"
             >
               <svg
                 className="w-7 h-7"
@@ -72,9 +83,8 @@ export const AppBar: React.FC = () => {
         </div>
 
         {/* Nav Links */}
-        {/* Wallet & Settings */}
         <div className="flex items-center gap-3 mr-6">
-          <div className="hidden md:inline-flex items-center justify-items gap-6">
+          {/* <div className="hidden md:inline-flex items-center justify-items gap-6">
             <NavElement
               label="Home"
               href="/"
@@ -95,7 +105,7 @@ export const AppBar: React.FC = () => {
               href="/getbitz"
               navigationStarts={() => setIsNavOpen(false)}
             />
-          </div>
+          </div> */}
           <label
             htmlFor="my-drawer"
             className="btn-gh items-center justify-between md:hidden mr-6"

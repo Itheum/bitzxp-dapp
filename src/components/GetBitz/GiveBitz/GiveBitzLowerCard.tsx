@@ -59,11 +59,13 @@ const GiveBitzLowerCard: React.FC<GiveBitzLowerCardProps> = (props) => {
     setIsPowerUpSuccess(false);
     setTweetText('');
     const bitzSent = bitzVal;
+
     const _isPowerUpSuccess = await sendPowerUp({
       bitsVal: bitzVal,
       bitsToWho: bountySubmitter,
       bitsToCampaignId: bountyId,
-      isNewGiver: bitzGivenToCreator <= 0 ? 1 : 0,
+      isNewGiver:
+        bitzGivenToCreator === undefined || bitzGivenToCreator <= 0 ? 1 : 0,
     });
 
     if (_isPowerUpSuccess) {
