@@ -599,7 +599,9 @@ const GetBitzView = () => {
           )}
           <img
             onClick={() => {
-              setLoadBlankGameCanvas(true);
+              if (address) {
+                setLoadBlankGameCanvas(true);
+              }
             }}
             className="rounded-[3rem] w-full cursor-pointer"
             src={ImgPlayGame.src}
