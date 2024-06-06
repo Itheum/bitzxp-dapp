@@ -72,6 +72,7 @@ import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import { notify } from 'utils/notifications';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import { set } from 'date-fns';
+import { useNetworkConfiguration } from 'contexts/NetworkConfigurationProvider';
 
 export interface LeaderBoardItemType {
   playerAddr: string;
@@ -116,6 +117,8 @@ const MEME_IMGS = [
 const GetBitzView = () => {
   const { publicKey, signMessage } = useWallet();
   const address = publicKey?.toBase58();
+  const { networkConfiguration, setNetworkConfiguration } =
+    useNetworkConfiguration();
   const [checkingIfHasGameDataNFT, setCheckingIfHasGameDataNFT] =
     useState<boolean>(true);
   const [hasGameDataNFT, setHasGameDataNFT] = useState<boolean>(false);
@@ -177,7 +180,7 @@ const GetBitzView = () => {
 
   useEffect(() => {
     if (publicKey) {
-      getUserDataNfts(publicKey);
+      getUserDataNfts(publicKey, networkConfiguration);
     }
   }, [publicKey]);
 

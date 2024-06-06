@@ -447,7 +447,7 @@ const GiveBitzBase = () => {
         </div>
 
         <div
-          className="flex flex-col md:flex-row md:flex-wrap gap-4 items-center md:items-center justify-center md:justify-center md:max-w-[60%] w-full antialiased pt-4 relative h-[100%]"
+          className="flex flex-col md:flex-row md:flex-wrap gap-3 items-center md:items-center justify-center md:justify-center md:max-w-[100%] w-full antialiased pt-4 relative h-[100%]"
           style={{
             backgroundImage: `url(${bounty.src})`,
             objectFit: 'scale-down',

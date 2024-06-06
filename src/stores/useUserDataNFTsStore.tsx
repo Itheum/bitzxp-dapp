@@ -5,16 +5,20 @@ import { DATA_NFT_COLLECTION_ID } from 'config';
 
 interface UserDataNFTsStore {
   nfts: any[];
-  getUserDataNfts: (publicKey: PublicKey) => void;
+  getUserDataNfts: (publicKey: PublicKey, network: string) => void;
 }
 
 const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
   nfts: [],
-  getUserDataNfts: async (publicKey) => {
+  getUserDataNfts: async (publicKey, network) => {
     let nfts = [];
     try {
+      const url =
+        network === 'mainnet'
+          ? 'https://mainnet.helius-rpc.com'
+          : 'https://devnet.helius-rpc.com';
       const resp = await fetch(
-        `https://devnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`,
+        `${url}/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`,
         {
           method: 'POST',
           headers: {

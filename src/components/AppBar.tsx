@@ -18,7 +18,7 @@ export const AppBar: React.FC = () => {
   return (
     <div>
       {/* NavBar / Header */}
-      <div className="flex h-20 flex-row md:mb-4 bg-black text-neutral-content bg-opacity-11 justify-between">
+      <div className="flex h-20 flex-row mb-4 bg-black text-neutral-content bg-opacity-11 justify-between">
         <div className="flex flex-row justify-around align-center">
           <div className="flex justify-center items-center content-center ml-4">
             <img
@@ -27,7 +27,7 @@ export const AppBar: React.FC = () => {
               className="w-12 h-12"
             />
           </div>
-          <div className="flex flex-col justify-center items-center content-center ml-4">
+          <div className="flex flex-col justify-center items-center content-center ml-4 text-center text-xs md:text-base">
             <h4>Get</h4>
             <h4>Bitz XP</h4>
           </div>
@@ -83,8 +83,8 @@ export const AppBar: React.FC = () => {
         </div>
 
         {/* Nav Links */}
-        <div className="flex items-center gap-3 mr-6">
-          {/* <div className="hidden md:inline-flex items-center justify-items gap-6">
+        {/* <div className="flex items-center gap-3 mr-6">
+          <div className="hidden md:inline-flex items-center justify-items gap-6">
             <NavElement
               label="Home"
               href="/"
@@ -105,7 +105,7 @@ export const AppBar: React.FC = () => {
               href="/getbitz"
               navigationStarts={() => setIsNavOpen(false)}
             />
-          </div> */}
+          </div>
           <label
             htmlFor="my-drawer"
             className="btn-gh items-center justify-between md:hidden mr-6"
@@ -131,7 +131,7 @@ export const AppBar: React.FC = () => {
               style={{ transform: 'rotate(135deg)' }}
             ></div>
           </label>
-        </div>
+        </div> */}
       </div>
     </div>
   );
