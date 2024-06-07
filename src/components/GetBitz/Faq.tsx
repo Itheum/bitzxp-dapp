@@ -338,7 +338,7 @@ const Faq: React.FC = () => {
       className="flex flex-col max-w-[100%] border border-[#35d9fa] p-[2rem] rounded-[1rem] mt-[3rem]"
     >
       <div className="flex flex-col mb-8 items-center justify-center">
-        <span className="text-foreground text-4xl mb-2">FAQs</span>
+        <h2 className="text-foreground text-4xl mb-2">FAQs</h2>
         <span className="text-base text-foreground/75 text-center ">
           Explore our frequently asked questions and answers.
         </span>

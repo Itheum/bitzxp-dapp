@@ -240,6 +240,13 @@ const GetBitzView = () => {
         updateGivenBitzSum(-1);
         updateCooldown(-1);
         updateCollectedBitzSum(-1);
+        if (!address) {
+          setPopulatedBitzStore(false);
+        }
+      }
+    } else {
+      if (!address) {
+        setPopulatedBitzStore(false);
       }
     }
   }, [publicKey, nfts]);
@@ -488,9 +495,17 @@ const GetBitzView = () => {
     let _gameDataFetched = gameDataFetched;
     let _isFetchingDataMarshal = isFetchingDataMarshal;
     let _isMemeBurnHappening = isMemeBurnHappening;
+    console.log(address);
+    if (!address) {
+      return (
+        <img
+          className="z-5 rounded-[3rem] w-full cursor-pointer"
+          src={ImgLogin.src}
+          alt={'Connect your wallet to play'}
+        />
+      );
+    }
 
-    // user is logged in and we are checking if they have the data nft to proceed with a play
-    console.log(address, checkingIfHasGameDataNFT, hasGameDataNFT, cooldown);
     if (
       (address && checkingIfHasGameDataNFT && !hasGameDataNFT) ||
       cooldown === -2
@@ -1060,18 +1075,20 @@ const GetBitzView = () => {
             )}
           </motion.div>
         </div>
-        <div className="absolute -z-1">
+        {/* <div className="absolute -z-1">
           <img
             className="-z-1 rounded-[3rem] w-full cursor-pointer"
             src={ImgLoadingGame.src}
             alt={'Checking if you have <BiTz> Data NFT'}
           />
-        </div>
+        </div> */}
         {gamePlayImageSprites()}
       </div>
 
       <div className="p-5 text-lg font-bold border border-[#35d9fa] rounded-[1rem] mt-[3rem] max-w-[100%]">
-        <h2 className="text-center text-white mb-[1rem]">Get BiTz Perks</h2>
+        <h2 className="text-center text-white mb-[1rem] text-4xl">
+          Get BiTz Perks
+        </h2>
 
         <ol className="mt-5">
           <li className="my-5">
@@ -1110,7 +1127,9 @@ const GetBitzView = () => {
         className="flex flex-col max-w-[100%] border border-[#35d9fa] p-[2rem] rounded-[1rem] mt-[3rem]"
       >
         <div className="leaderBoard">
-          <h2 className="text-center text-white mb-[1rem]">LEADERBOARD</h2>
+          <h2 className="text-center text-white mb-[1rem] text-4xl">
+            LEADERBOARD
+          </h2>
 
           {address && leaderBoardAllTime.length > 0 && (
             <div className="my-rank-and-score md:flex md:justify-center border p-[.6rem] mb-[1rem] rounded-[1rem] text-center bg-[#35d9fa] bg-opacity-25">

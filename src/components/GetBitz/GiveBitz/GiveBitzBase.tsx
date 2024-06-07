@@ -278,13 +278,6 @@ const GiveBitzBase = () => {
     bitsToCampaignId: string;
     isNewGiver: number;
   }) {
-    console.log(
-      'sendPowerUp',
-      bitsVal,
-      bitsToWho,
-      bitsToCampaignId,
-      isNewGiver,
-    );
     try {
       const viewDataArgs = {
         headers: {
@@ -379,7 +372,7 @@ const GiveBitzBase = () => {
       className="flex flex-col max-w-[100%] border border-[#35d9fa] p-[2rem] rounded-[1rem] mt-[3rem]"
     >
       <div className="flex flex-col mb-8 items-center justify-center">
-        <span className="text-foreground text-4xl mb-2">Give Bitz</span>
+        <h2 className="text-foreground text-4xl mb-2">Give Bitz</h2>
         <span className="text-base text-foreground/75 text-center ">
           Power-Up VERIFIED Data Creators and Data Bounties
         </span>
@@ -427,9 +420,9 @@ const GiveBitzBase = () => {
       <div id="bounties" className="flex flex-col items-center justify-center">
         <div className="flex flex-col mt-10 mb-8 items-center justify-center ">
           <div className="flex flex-col md:flex-row items-center justify-center ">
-            <span className="text-foreground text-4xl mb-2 text-center">
+            <h2 className="text-foreground text-4xl mb-2 text-center">
               Power-up Data Bounties{' '}
-            </span>
+            </h2>
             <div className="flex flex-row ml-8 text-foreground text-4xl ">
               {bitzBalance === -2 ? (
                 `...`
