@@ -1,5 +1,5 @@
 export const DATA_NFT_COLLECTION_ID =
-  'Hqu6YRz572g48GUZBFcXuTuSJD6sM7kchtCfX7jaLLfh';
+  '6MgvQSDUU3Z2a5MQqPeStUyCo1AXrB8xJhyBc8YYH3uk';
 
 export enum EnvironmentsEnum {
   testnet = 'testnet',
