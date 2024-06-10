@@ -919,7 +919,6 @@ const GetBitzView = () => {
   }
 
   async function fetchAndLoadLeaderBoards() {
-    if (nfts.length === 0) return;
     setLeaderBoardIsLoading(true);
     const callConfig = {
       headers: {
@@ -999,7 +998,6 @@ const GetBitzView = () => {
   }
 
   async function fetchAndLoadMyRankOnLeaderBoard() {
-    if (nfts.length === 0) return;
     const callConfig = {
       headers: {
         'fwd-tokenid': DATA_NFT_COLLECTION_ID,
