@@ -73,6 +73,8 @@ import { notify } from 'utils/notifications';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import { set } from 'date-fns';
 import { useNetworkConfiguration } from 'contexts/NetworkConfigurationProvider';
+import { DATA_NFT_COLLECTION_ID } from 'config';
+import dynamic from 'next/dynamic';
 
 export interface LeaderBoardItemType {
   playerAddr: string;
@@ -150,7 +152,7 @@ const GetBitzView = () => {
   const [burnProgress, setBurnProgress] = useState(0);
   const [randomMeme, setRandomMeme] = useState<any>(Meme1.src);
   const [populatedBitzStore, setPopulatedBitzStore] = useState<boolean>(false);
-  const tweetText = `url=https://explorer.itheum.io/getbitz?v=2&text=${viewDataRes?.data.gamePlayResult.bitsWon > 0 ? 'I just played the Get <BiTz> XP Game on %23itheum and won ' + viewDataRes?.data.gamePlayResult.bitsWon + ' <BiTz> points 🙌!%0A%0APlay now and get your own <BiTz>! %23GetBiTz' : 'Oh no, I got rugged getting <BiTz> points this time. Maybe you will have better luck?%0A%0ATry here to %23GetBiTz %23itheum %0A'}`;
+  const tweetText = `url=https://bitzxp.itheum.io/getbitz?v=2&text=${viewDataRes?.data.gamePlayResult.bitsWon > 0 ? 'I just played the Get <BiTz> XP Game on %23itheum and won ' + viewDataRes?.data.gamePlayResult.bitsWon + ' <BiTz> points 🙌!%0A%0APlay now and get your own <BiTz>! %23GetBiTz' : 'Oh no, I got rugged getting <BiTz> points this time. Maybe you will have better luck?%0A%0ATry here to %23GetBiTz %23itheum %0A'}`;
   ///TODO add ?r=${address}
   const [usingReferralCode, setUsingReferralCode] = useState<string>('');
   // const tweetTextReferral = `url=https://explorer.itheum.io/getbitz?r=${address}&text=Join the %23itheum <BiTz> XP Game and be part of the %23web3 data ownership revolution.%0A%0AJoin via my referral link and get a bonus chance to win <BiTz> XP 🙌. Click below to %23GetBiTz!`;
@@ -499,6 +501,7 @@ const GetBitzView = () => {
     if (!address) {
       return (
         <img
+          onClick={() => {}}
           className="z-5 rounded-[3rem] w-full cursor-pointer"
           src={ImgLogin.src}
           alt={'Connect your wallet to play'}
@@ -920,7 +923,7 @@ const GetBitzView = () => {
     setLeaderBoardIsLoading(true);
     const callConfig = {
       headers: {
-        'fwd-tokenid': nfts[0].id,
+        'fwd-tokenid': DATA_NFT_COLLECTION_ID,
       },
     };
     const nowDateObj = new Date();
@@ -999,7 +1002,7 @@ const GetBitzView = () => {
     if (nfts.length === 0) return;
     const callConfig = {
       headers: {
-        'fwd-tokenid': nfts[0].id,
+        'fwd-tokenid': DATA_NFT_COLLECTION_ID,
       },
     };
     try {

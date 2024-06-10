@@ -14,6 +14,7 @@ import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import { BlobDataType, getApiWeb2Apps, sleep } from '../utils';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import bs58 from 'bs58';
+import { DATA_NFT_COLLECTION_ID } from 'config';
 
 const GiveBitzBase = () => {
   const { publicKey, signMessage } = useWallet();
@@ -87,7 +88,7 @@ const GiveBitzBase = () => {
       bitzStore.updateGivenBitzSum(-2);
       const callConfig = {
         headers: {
-          'fwd-tokenid': nfts[0].nftId,
+          'fwd-tokenid': DATA_NFT_COLLECTION_ID,
         },
       };
       try {
@@ -118,7 +119,7 @@ const GiveBitzBase = () => {
     setGiverLeaderBoardIsLoading(true);
     const callConfig = {
       headers: {
-        'fwd-tokenid': nfts[0].nftId,
+        'fwd-tokenid': DATA_NFT_COLLECTION_ID,
       },
     };
     try {
@@ -155,7 +156,7 @@ const GiveBitzBase = () => {
   }): Promise<any> {
     const callConfig = {
       headers: {
-        'fwd-tokenid': nfts[0].id,
+        'fwd-tokenid': DATA_NFT_COLLECTION_ID,
       },
     };
     try {
@@ -187,7 +188,7 @@ const GiveBitzBase = () => {
   }) {
     const callConfig = {
       headers: {
-        'fwd-tokenid': nfts[0].id,
+        'fwd-tokenid': DATA_NFT_COLLECTION_ID,
       },
     };
     try {
@@ -217,7 +218,7 @@ const GiveBitzBase = () => {
   }) {
     const callConfig = {
       headers: {
-        'fwd-tokenid': nfts[0].id,
+        'fwd-tokenid': DATA_NFT_COLLECTION_ID,
       },
     };
     try {
