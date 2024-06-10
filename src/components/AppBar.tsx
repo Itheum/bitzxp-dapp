@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { useAutoConnect } from '../contexts/AutoConnectProvider';
 import NetworkSwitcher from './NetworkSwitcher';
 import NavElement from './nav-element';
+import useUserBitzStore from 'stores/useUserBitzStore';
+import { FlaskRound } from 'lucide-react';
 
 const WalletMultiButtonDynamic = dynamic(
   async () =>
@@ -15,6 +17,55 @@ const WalletMultiButtonDynamic = dynamic(
 export const AppBar: React.FC = () => {
   const { autoConnect, setAutoConnect } = useAutoConnect();
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { bitzBalance, cooldown } = useUserBitzStore();
+
+  const FlaskBottleAnimation = () => {
+    return (
+      <div className="relative w-full h-full">
+        {cooldown <= 0 && cooldown != -2 && (
+          <>
+            <div
+              className="absolute rounded-full w-[0.4rem] h-[0.4rem] top-[-15px] left-[10px] bg-[#35d9fa] animate-ping-slow"
+              style={{ animationDelay: '1s' }}
+            ></div>
+            <div
+              className="absolute rounded-full w-[0.3rem] h-[0.3rem] top-[-8px] left-[4px] bg-[#35d9fa] animate-ping-slow"
+              style={{ animationDelay: '0.5s' }}
+            ></div>
+            <div className="absolute rounded-full w-1 h-1 top-[-5px] left-[13px] bg-[#35d9fa] animate-ping-slow"></div>
+          </>
+        )}
+        <FlaskRound className="fill-[#35d9fa]" />
+      </div>
+    );
+  };
+
+  const BitzScore = () => {
+    return (
+      <div className="shadow-sm shadow-[#35d9fa] rounded-lg justify-center">
+        <div className="text-sm tracking-wide hover:bg-transparent">
+          {bitzBalance === -2 ? (
+            <span className="flex items-center gap-0.5 blinkMe text-lg p-2">
+              ... <FlaskBottleAnimation />
+            </span>
+          ) : (
+            <>
+              {bitzBalance === -1 ? (
+                <div className="flex items-center gap-0.5 text-base p-2">
+                  0 <FlaskBottleAnimation />
+                </div>
+              ) : (
+                <div className="flex items-center gap-0.5 text-base p-2">
+                  {bitzBalance} <FlaskBottleAnimation />
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div>
       {/* NavBar / Header */}
@@ -24,17 +75,16 @@ export const AppBar: React.FC = () => {
             <img
               src="/itheumLogo.png"
               alt="Itheum Logo"
-              className="w-12 h-12"
+              className="w-[57px] h-[57px] p-[8x]"
             />
           </div>
-          <div className="flex flex-col justify-center items-center content-center ml-4 text-center text-xs md:text-base">
-            <h4>Get</h4>
-            <h4>Bitz XP</h4>
+          <div className="flex flex-col justify-center items-start content-center ml-4 text-center text-xs md:text-base">
+            <h4 className="text-white font-semibold font-epilogue">Itheum</h4>
+            <h4 className="bg-gradient-to-r bg-clip-text text-transparent from-violet-500 to-teal-400 font-semibold font-epilogue">
+              Get Bitz XP
+            </h4>
           </div>
-          <div className="ml-6 flex gap-2 items-center">
-            <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg " />
-          </div>
-          <div className="dropdown dropdown-end z-50 self-center m-1">
+          {/* <div className="dropdown dropdown-end z-50 self-center m-1">
             <div
               tabIndex={0}
               className="btn btn-square btn-ghost text-right mx-3"
@@ -79,7 +129,7 @@ export const AppBar: React.FC = () => {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Nav Links */}
@@ -132,6 +182,10 @@ export const AppBar: React.FC = () => {
             ></div>
           </label>
         </div> */}
+        <div className="mx-6 mt-1 flex gap-5 items-center">
+          <BitzScore />
+          <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg " />
+        </div>
       </div>
     </div>
   );
