@@ -403,7 +403,9 @@ const GiveBitzBase = () => {
         <h3 className="text-center mb-[1rem]">POWER-UP LEADERBOARD</h3>
 
         {giverLeaderBoardIsLoading ? (
-          <Loader />
+          <div className="flex justify-center items-center h-100">
+            <Loader />
+          </div>
         ) : (
           <>
             {giverLeaderBoard && giverLeaderBoard.length > 0 ? (
@@ -425,12 +427,16 @@ const GiveBitzBase = () => {
               Power-up Data Bounties{' '}
             </h2>
             <div className="flex flex-row ml-8 text-foreground text-4xl ">
-              {bitzBalance === -2 ? (
-                `...`
-              ) : (
-                <>{bitzBalance === -1 ? '0' : `${bitzBalance}`}</>
+              {publicKey && (
+                <>
+                  {bitzBalance === -2 ? (
+                    `...`
+                  ) : (
+                    <>{bitzBalance === -1 ? '0' : `${bitzBalance}`}</>
+                  )}
+                  <FlaskRound className=" w-10 h-10 fill-[#35d9fa]" />
+                </>
               )}
-              <FlaskRound className=" w-10 h-10 fill-[#35d9fa]" />
             </div>
           </div>
           <span className="text-base text-foreground/75 text-center ">
@@ -462,7 +468,9 @@ const GiveBitzBase = () => {
               );
             })
           ) : (
-            <Loader />
+            <div className="flex justify-center items-center h-100">
+              <Loader />
+            </div>
           )}
         </div>
         <div className="mt-8 group max-w-[60rem]" data-highlighter>

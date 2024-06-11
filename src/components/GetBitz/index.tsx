@@ -1163,7 +1163,9 @@ const GetBitzView = () => {
             <div className="my-[1rem] allTime md:flex-1">
               <h3 className="text-center text-white mb-[1rem]">All Time</h3>
               {leaderBoardIsLoading ? (
-                <Loader />
+                <div className="flex justify-center items-center h-100">
+                  <Loader />
+                </div>
               ) : (
                 <>
                   {leaderBoardAllTime.length > 0 ? (
@@ -1188,7 +1190,9 @@ const GetBitzView = () => {
                 )}
               </h3>
               {leaderBoardIsLoading ? (
-                <Loader />
+                <div className="flex justify-center items-center h-100">
+                  <Loader />
+                </div>
               ) : (
                 <>
                   {leaderBoardMonthly.length > 0 ? (

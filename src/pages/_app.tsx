@@ -15,7 +15,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Itheum Get Bitz XP</title>
+        <title>Itheum Bitz XP</title>
       </Head>
 
       <ContextProvider>

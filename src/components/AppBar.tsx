@@ -7,6 +7,7 @@ import NetworkSwitcher from './NetworkSwitcher';
 import NavElement from './nav-element';
 import useUserBitzStore from 'stores/useUserBitzStore';
 import { FlaskRound } from 'lucide-react';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 const WalletMultiButtonDynamic = dynamic(
   async () =>
@@ -17,6 +18,7 @@ const WalletMultiButtonDynamic = dynamic(
 export const AppBar: React.FC = () => {
   const { autoConnect, setAutoConnect } = useAutoConnect();
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { publicKey } = useWallet();
   const { bitzBalance, cooldown } = useUserBitzStore();
 
   const FlaskBottleAnimation = () => {
@@ -78,10 +80,10 @@ export const AppBar: React.FC = () => {
               className="w-[57px] h-[57px] p-[8x]"
             />
           </div>
-          <div className="flex flex-col justify-center items-start content-center ml-4 text-center text-xs md:text-base">
+          <div className="hidden md:flex flex-col justify-center items-start content-center ml-4 text-center text-xs md:text-base">
             <h4 className="text-white font-semibold font-epilogue">Itheum</h4>
             <h4 className="bg-gradient-to-r bg-clip-text text-transparent from-violet-500 to-teal-400 font-semibold font-epilogue">
-              Get Bitz XP
+              Bitz XP
             </h4>
           </div>
           {/* <div className="dropdown dropdown-end z-50 self-center m-1">
@@ -183,7 +185,7 @@ export const AppBar: React.FC = () => {
           </label>
         </div> */}
         <div className="mx-6 mt-1 flex gap-5 items-center">
-          <BitzScore />
+          {publicKey && <BitzScore />}
           <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg " />
         </div>
       </div>

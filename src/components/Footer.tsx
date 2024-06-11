@@ -15,7 +15,7 @@ export const Footer: FC = () => {
           {...{
             target: '_blank',
           }}
-          className="flex items-center dark:text-white text-black text-sm"
+          className="flex items-center text-white text-sm"
           href="https://itheum.io"
         >
           Made with ♥ by Itheum

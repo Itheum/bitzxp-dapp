@@ -19,6 +19,7 @@
     "@metaplex-foundation/umi": "0.8.10",
     "@metaplex-foundation/umi-bundle-defaults": "0.8.10",
     "@metaplex-foundation/umi-web3js-adapters": "0.8.10",
+    "@next/third-parties": "14.2.3",
     "@noble/ed25519": "1.7.3",
     "@solana/spl-account-compression": "0.2.1",
     "@solana/spl-token": "0.4.6",

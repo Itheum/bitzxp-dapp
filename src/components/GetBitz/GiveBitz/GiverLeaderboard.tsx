@@ -72,7 +72,7 @@ const GiverLeaderboard: React.FC<GiverLeaderboardProps> = (props) => {
             Bounty {bountyId}
           </h4>
           {giverLeaderBoardIsLoading ? (
-            <div className="flex items-center justify-center  ">
+            <div className="flex items-center justify-center h-100">
               <Loader className="w-32" />
             </div>
           ) : (

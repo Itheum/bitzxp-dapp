@@ -18,7 +18,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ title, content }) => {
           setShowAnswer((prev) => !prev);
         }}
       >
-        <h3 className={'text-4xl font-semibold'}>{title}</h3>
+        <h3 className={'text-2xl md:text-4xl font-semibold'}>{title}</h3>
         <div
           className={cn(
             'w-8 justify-end flex text-[#35d9fa] -mt-1  ',

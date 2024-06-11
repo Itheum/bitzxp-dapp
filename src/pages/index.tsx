@@ -7,7 +7,7 @@ const Home: NextPage = (props) => {
   return (
     <div className="w-[92%] md:w-[88%]">
       <Head>
-        <title>Itheum Get Bitz XP</title>
+        <title>Itheum Bitz XP</title>
       </Head>
       <GetBitzView />
     </div>
