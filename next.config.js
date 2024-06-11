@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
+const { version } = require('./package.json');
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -19,6 +22,9 @@ const nextConfig = {
         pathname: '**',
       },
     ],
+  },
+  publicRuntimeConfig: {
+    version,
   },
 };
 

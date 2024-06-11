@@ -1,18 +1,34 @@
+@import './satoshi.css';
+@import './clashDisplay.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Satoshi-Regular', sans-serif;
+}
+
+h1,
+h2 {
+  font-family: 'Clash-Medium', sans-serif;
+}
+
+.font-epilogue {
+  font-family: 'Epilogue', sans-serif;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Clash-Regular', sans-serif;
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-image: radial-gradient(
-    circle farthest-side at 50% 100%,rgba(1, 9, 18, 0),
-    rgba(1, 6, 14, 0.6) 36%,
-    rgba(1, 14, 29, 0.6) 55%,
-    rgba(49, 18, 93, 0.4));
+  background-image: 0 0% 9%;
 }
 
 a {
@@ -29,5 +45,62 @@ a {
   background-color: #707070;
 }
 
+body {
+  background: linear-gradient(
+    314deg,
+    rgba(0, 199, 151, 0.1),
+    rgba(53, 217, 250, 0.2),
+    rgba(53, 217, 250, 0.1)
+  );
+  background-size: 600% 600%;
 
+  -webkit-animation: AnimationName 26s ease infinite;
+  -moz-animation: AnimationName 26s ease infinite;
+  -o-animation: AnimationName 26s ease infinite;
+  animation: AnimationName 26s ease infinite;
+}
 
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 38%;
+  }
+  50% {
+    background-position: 100% 63%;
+  }
+  100% {
+    background-position: 0% 38%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 38%;
+  }
+  50% {
+    background-position: 100% 63%;
+  }
+  100% {
+    background-position: 0% 38%;
+  }
+}
+@-o-keyframes AnimationName {
+  0% {
+    background-position: 0% 38%;
+  }
+  50% {
+    background-position: 100% 63%;
+  }
+  100% {
+    background-position: 0% 38%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 38%;
+  }
+  50% {
+    background-position: 100% 63%;
+  }
+  100% {
+    background-position: 0% 38%;
+  }
+}

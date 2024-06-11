@@ -1,63 +1,57 @@
 import { FC, useCallback, useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
-import Image from 'next/image';
-import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
+import { itheumPreaccess, itheumViewDataInNewTab } from 'utils/ItheumViewData';
 import { verify } from '@noble/ed25519';
 import { notify } from '../../utils/notifications';
 import bs58 from 'bs58';
+import { useNetworkConfiguration } from 'contexts/NetworkConfigurationProvider';
 
 export const GalleryView: FC = ({}) => {
   const { publicKey, signMessage } = useWallet();
   const nfts = useUserDataNFTsStore((s) => s.nfts);
   const { getUserDataNfts } = useUserDataNFTsStore();
-
+  const { networkConfiguration, setNetworkConfiguration } =
+    useNetworkConfiguration();
   useEffect(() => {
     if (publicKey) {
-      getUserDataNfts(publicKey);
+      getUserDataNfts(publicKey, networkConfiguration);
     }
   }, [publicKey, getUserDataNfts]);
 
   const signPreaccess = useCallback(async () => {
     const nonce = await itheumPreaccess();
-    console.log(nonce);
-    try {
-      if (!publicKey) throw new Error('Wallet not connected!');
-      if (!signMessage)
-        throw new Error('Wallet does not support message signing!');
-      const message = new TextEncoder().encode(nonce);
-      const signature = await signMessage(message);
-      const encodedSignature = bs58.encode(signature);
-      if (!verify(signature, message, publicKey.toBytes()))
-        throw new Error('Invalid signature!');
-      notify({
-        type: 'success',
-        message: 'Message signed successfully!',
-        txid: encodedSignature,
-      });
-      return { nonce, signature: encodedSignature };
-    } catch (error: any) {
-      notify({
-        type: 'error',
-        message: 'Message signing failed!',
-        description: error?.message,
-      });
-      console.log('error', `Sign Message failed! ${error?.message}`);
-    }
+    if (!publicKey) throw new Error('Wallet not connected!');
+    if (!signMessage)
+      throw new Error('Wallet does not support message signing!');
+    const message = new TextEncoder().encode(nonce);
+    const signature = await signMessage(message);
+    const encodedSignature = bs58.encode(signature);
+    if (!verify(signature, message, publicKey.toBytes()))
+      throw new Error('Invalid signature!');
+    notify({
+      type: 'success',
+      message: 'Message signed successfully!',
+      txid: encodedSignature,
+    });
+    return { nonce, signature: encodedSignature };
   }, [publicKey, signMessage]);
 
   const handleViewDataClick = async (nft) => {
-    const { nonce, signature } = await signPreaccess();
-    const assetId = nft.id;
-    const address = publicKey;
-    if (!nonce || !signature || !assetId || !address) return;
-    console.log('View Data', {
-      assetId,
-      nonce,
-      signature,
-      address: address.toBase58(),
-    });
-    itheumViewData(assetId, nonce, signature, address);
+    try {
+      const { nonce, signature } = await signPreaccess();
+      const assetId = nft.id;
+      const address = publicKey;
+      if (!nonce || !signature || !assetId || !address) return;
+      itheumViewDataInNewTab(assetId, nonce, signature, address);
+    } catch (e) {
+      notify({
+        type: 'error',
+        message: 'View Data failed!',
+        description: e?.message,
+      });
+      console.log('error', `View data failed! ${e?.message}`);
+    }
   };
 
   return (
@@ -73,7 +67,7 @@ export const GalleryView: FC = ({}) => {
               key={idx}
               className=" mx-5 flex flex-col p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
-              <Image
+              <img
                 src={
                   nft.content.files[0]?.uri ??
                   'https://devnet-explorer.multiversx.com/assets/img/default.png'

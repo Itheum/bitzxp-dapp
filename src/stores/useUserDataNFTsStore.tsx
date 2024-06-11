@@ -1,19 +1,24 @@
 import create from 'zustand';
 import { Connection, PublicKey } from '@solana/web3.js';
+import { notify } from 'utils/notifications';
+import { DATA_NFT_COLLECTION_ID } from 'config';
 
 interface UserDataNFTsStore {
   nfts: any[];
-  getUserDataNfts: (publicKey: PublicKey) => void;
+  getUserDataNfts: (publicKey: PublicKey, network: string) => void;
 }
 
 const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
   nfts: [],
-  getUserDataNfts: async (publicKey) => {
+  getUserDataNfts: async (publicKey, network) => {
     let nfts = [];
     try {
-      console.log(process.env.NEXT_PUBLIC_HELIUS_API_KEY);
+      const url =
+        network === 'mainnet'
+          ? 'https://mainnet.helius-rpc.com'
+          : 'https://devnet.helius-rpc.com';
       const resp = await fetch(
-        `https://devnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`,
+        `${url}/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`,
         {
           method: 'POST',
           headers: {
@@ -32,13 +37,21 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
         },
       );
       const data = await resp.json();
-      nfts = data.result.items;
+      nfts = data.result.items.filter(
+        (nft) =>
+          nft.grouping.find((g) => g.group_key === 'collection').group_value ===
+          DATA_NFT_COLLECTION_ID,
+      );
     } catch (e) {
-      console.log(`error getting nfts: `, e);
+      notify({
+        type: 'error',
+        message: 'User owned NFTs fetch failed',
+        description: (e as Error).message,
+      });
     }
     set((s) => {
+      console.log(nfts);
       s.nfts = nfts;
-      console.log(`nfts updated, `, nfts);
     });
   },
 }));

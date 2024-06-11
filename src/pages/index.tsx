@@ -1,18 +1,15 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { HomeView } from "../views";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { HomeView } from '../views';
+import GetBitzView from 'components/GetBitz';
 
 const Home: NextPage = (props) => {
   return (
-    <div>
+    <div className="w-[92%] md:w-[88%]">
       <Head>
-        <title>Solana Scaffold</title>
-        <meta
-          name="description"
-          content="Solana Scaffold"
-        />
+        <title>Itheum Bitz XP</title>
       </Head>
-      <HomeView />
+      <GetBitzView />
     </div>
   );
 };
