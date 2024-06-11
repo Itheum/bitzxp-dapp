@@ -1,8 +1,8 @@
 # Itheum Bitz XP
 
-The Itheum Data DEX enables you to trade your data using web3 & blockchain technology. It is multi-chain by default and already supports MultiversX (Previously Elrond) and will support key EVM compatible chains in the near future.
+The Itheum Bitz XP dApp enables you to earn XP by burning memes thus proving your liveliness. The XP can be used to participate in the Itheum ecosystem and support Data Creators.
 
-![Itheum Data DEX](https://raw.githubusercontent.com/Itheum/data-dex/main/itheum-dex-hero.png)
+![Itheum Get Bitz](https://explorer.itheum.io/itheum_explorer_social_hero.png)
 
 ## What is Itheum?
 
@@ -11,11 +11,3 @@ The Itheum Data DEX is a core product that is part of the Itheum Platform - **It
 ## Whitepaper
 
 Read Here - https://itheum.io/whitepaper
-
-## Use the DEX Testnet here
-
-Try the Data DEX Testnet here - https://datadex.itheum.io
-
-## Contributing Code
-
-The Data DEX is open source and community developers are welcome to contribute.
