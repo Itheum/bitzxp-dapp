@@ -42,6 +42,10 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
           nft.grouping.find((g) => g.group_key === 'collection').group_value ===
           DATA_NFT_COLLECTION_ID,
       );
+      // QmaSwqUPtMivhgbNDU2K6LJhetu8zK4A2w6dwCdN51GXDF
+      // MainM
+      nfts = nfts.filter((nft) => nft.content.json_uri.includes('arweave'));
+      console.log(nfts);
     } catch (e) {
       notify({
         type: 'error',

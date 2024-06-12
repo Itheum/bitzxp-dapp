@@ -13,6 +13,7 @@ export function shortenAddress(value: string, length: number = 6): string {
 }
 
 export const getApiDataMarshal = (networkMode: string) => {
+  return 'https://api.itheumcloud.com/datamarshalapi/router/v1';
   const envKey =
     networkMode === 'mainnet'
       ? 'NEXT_PUBLIC_DATAMARSHAL_MAINNET_API'
