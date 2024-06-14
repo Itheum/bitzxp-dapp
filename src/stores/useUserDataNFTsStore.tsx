@@ -13,38 +13,15 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
   getUserDataNfts: async (publicKey, network) => {
     let nfts = [];
     try {
-      const url =
-        network === 'mainnet'
-          ? 'https://mainnet.helius-rpc.com'
-          : 'https://devnet.helius-rpc.com';
       const resp = await fetch(
-        `${url}/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            jsonrpc: '2.0',
-            id: `${publicKey.toBase58()}-${new Date().getTime()}`,
-            method: 'getAssetsByOwner',
-            params: {
-              ownerAddress: publicKey.toBase58(),
-              page: 1,
-              limit: 1000,
-            },
-          }),
-        },
+        `/api/fetchNfts?publicKeyb58=${publicKey.toBase58()}`,
       );
       const data = await resp.json();
-      nfts = data.result.items.filter(
-        (nft) =>
-          nft.grouping.find((g) => g.group_key === 'collection').group_value ===
-          DATA_NFT_COLLECTION_ID,
-      );
       // QmaSwqUPtMivhgbNDU2K6LJhetu8zK4A2w6dwCdN51GXDF
       // MainM
-      nfts = nfts.filter((nft) => nft.content.json_uri.includes('arweave'));
+      nfts = data.nfts.filter((nft) =>
+        nft.content.json_uri.includes('arweave'),
+      );
       console.log(nfts);
     } catch (e) {
       notify({
