@@ -77,6 +77,15 @@ export function getDataBounties() {
 
   if (process.env.NEXT_PUBLIC_ENV_NETWORK === EnvironmentsEnum.devnet) {
     allBounties.push({
+      bountySubmitter: 'TO BE FILLED',
+      bountyId: 'b10',
+      title: 'Alpha Gamer Passport',
+      summary: `Create a Data NFT which can be used by gamers as a Data Vault in order to crowdsource their data for the AI industry and generate revenue for the data they share.`,
+      readMoreLink: '',
+      submittedOnTs: 1718622020,
+      fillPerks: `Donate +100 BiTz to be eligible for the first drop of the Gamer Passport Data NFT.`,
+    });
+    allBounties.push({
       bountySubmitter:
         'erd1xdq4d7uewptx9j9k23aufraklda9leumqc7eu3uezt2kf4fqxz2sex2rxl',
       bountyId: 'b11',
@@ -84,20 +93,6 @@ export function getDataBounties() {
       summary:
         'A dynamic Data NFT which can be opened to find the top 50 flippers of ITHEUM tokens',
       readMoreLink: 'https://docs.itheum.io/data-bounties/top-itheum-flippers',
-      submittedOnTs: 1712713989,
-      fillPerks:
-        'Top 20 Leaderboard gets Data NFT once bounty launches. 10 Data NFTs to be dropped to random winners of top 100 Leaderboard.',
-      finalizedDataNftIdentifier: 'DATANFTFT-e936d4-0a',
-    });
-
-    allBounties.push({
-      bountySubmitter:
-        'erd1xdq4d7uewptx9j9k23aufraklda9leumqc7eu3uezt2kf4fqxz2sex2rxl',
-      bountyId: 'b21',
-      title: 'Top 50 addresses of daily RIDE flippers',
-      summary:
-        'A dynamic Data NFT which can be opened to find the top 50 flippers of RIDE tokens',
-      readMoreLink: 'https://docs.itheum.io/data-bounties/top-ride-flippers',
       submittedOnTs: 1712713989,
       fillPerks:
         'Top 20 Leaderboard gets Data NFT once bounty launches. 10 Data NFTs to be dropped to random winners of top 100 Leaderboard.',
@@ -127,63 +122,17 @@ export function getDataBounties() {
       fillPerks:
         'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
     });
-    allBounties.push({
-      bountySubmitter:
-        'erd108t4gdwdhwx2xhj5q0e6pujurk0kdyzxxh69987e873n83xumazshe0l3r',
-      bountyId: 'b3',
-      title: '$BOBER flippers',
-      summary:
-        'Create a dynamic visual map of everyone flipping $BOBER. Each address should be represented as a Bubble, and the bubble increases every time the address sells $BOBER.\n The dynamic map can show the top 150/250/500 flippers as a starting point and evolve into more numbers over time.\n',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd108t4gdwdhwx2xhj5q0e6pujurk0kdyzxxh69987e873n83xumazshe0l3r',
-      bountyId: 'b4',
-      title: 'ESDT flippers',
-      summary:
-        'Create a dynamic visual map of everyone flipping any ESDT tokens. Each address should be represented as a Bubble, and the bubble increases every time the address sells ESDT.\n The dynamic map can show the top 150/250/500 flippers as a starting point and evolve into more numbers over time.\n',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd1mvuj03mcvrpc48nhnkptdjkx9xwm65jadxgy500m293vvkqkkutqgfm24d',
-      bountyId: 'b5',
-      title: 'MultiversX Meme vs Other Major Blockchain Meme Coin Activity',
-      summary:
-        'hain vs other major Blockchain ecosystems. The activity can include volumes per day, total unique holders, and any other valuable metrics that show “activity”Create a dynamic visual map that compares the Meme Coin activity in the MultiversX blockchain vs other major Blockchain ecosystems. The activity can include volumes per day, total unique holders, and any other valuable metrics that show “activity”',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd12nk8jwsfrnp6zdrwsc28nnn54psfcj5rjzqmm8z2xl0xv8g8ra5q5evzw8',
-      bountyId: 'b9',
-      title: 'MultiversX Developers Community',
-      summary: `Infographics and data visualization about the number of developers on the Elrond / MultiversX ecosystem.\n
-        The goal is to better understand the developing ecosystem and it's evolution over the years, using only facts and not the noise on social networks.\n
-        It would be interesting to see data such as the repartition core dev / other dev, evolution of the number of releases, posts on GitHub, fixes, and new smart contracts on dev or mainet...`,
-      readMoreLink: '',
-      submittedOnTs: 1715084891,
-      fillPerks: `The creator of the bounty will receive 5 copies of the album. 
-        The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.  
-        Contributors ranked 6th to 20th will receive 2 copies each. 
-        Contributors ranked 21st to 50th will receive 1 copy each. 
-        Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy. 
-        50 copies donated to BiTz Monthly Leaderboard`,
-
-      finalized: true,
-    });
     return allBounties;
   } else {
+    allBounties.push({
+      bountySubmitter: 'TO BE FILLED',
+      bountyId: 'b12',
+      title: 'Alpha Gamer Passport',
+      summary: `Create a Data NFT which can be used by gamers as a Data Vault in order to crowdsource their data for the AI industry and generate revenue for the data they share.`,
+      readMoreLink: '',
+      submittedOnTs: 1718622020,
+      fillPerks: `Donate +100 BiTz to be eligible for the first drop of the Gamer Passport Data NFT.`,
+    });
     allBounties.push({
       bountySubmitter:
         'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2',
@@ -209,42 +158,6 @@ export function getDataBounties() {
       fillPerks:
         'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
       finalizedDataNftIdentifier: 'DATANFTFT-e936d4-0a',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd108t4gdwdhwx2xhj5q0e6pujurk0kdyzxxh69987e873n83xumazshe0l3r',
-      bountyId: 'b3',
-      title: '$BOBER flippers',
-      summary:
-        'Create a dynamic visual map of everyone flipping $BOBER. Each address should be represented as a Bubble, and the bubble increases every time the address sells $BOBER.\n The dynamic map can show the top 150/250/500 flippers as a starting point and evolve into more numbers over time.\n',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd108t4gdwdhwx2xhj5q0e6pujurk0kdyzxxh69987e873n83xumazshe0l3r',
-      bountyId: 'b4',
-      title: 'ESDT flippers',
-      summary:
-        'Create a dynamic visual map of everyone flipping any ESDT tokens. Each address should be represented as a Bubble, and the bubble increases every time the address sells ESDT.\n The dynamic map can show the top 150/250/500 flippers as a starting point and evolve into more numbers over time.\n',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd1mvuj03mcvrpc48nhnkptdjkx9xwm65jadxgy500m293vvkqkkutqgfm24d',
-      bountyId: 'b5',
-      title: 'MultiversX Meme vs Other Major Blockchain Meme Coin Activity',
-      summary:
-        'Create a dynamic visual map that compares the Meme Coin activity in the MultiversX blockchain vs other major Blockchain ecosystems. The activity can include volumes per day, total unique holders, and any other valuable metrics that show “activity”',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
     });
     allBounties.push({
       bountySubmitter:
@@ -284,24 +197,6 @@ export function getDataBounties() {
     });
     allBounties.push({
       bountySubmitter:
-        'erd12nk8jwsfrnp6zdrwsc28nnn54psfcj5rjzqmm8z2xl0xv8g8ra5q5evzw8',
-      bountyId: 'b9',
-      title: 'MultiversX Developers Community',
-      summary: `Infographics and data visualization about the number of developers on the Elrond / MultiversX ecosystem.\n
-        The goal is to better understand the developing ecosystem and it's evolution over the years, using only facts and not the noise on social networks.\n
-        It would be interesting to see data such as the repartition core dev / other dev, evolution of the number of releases, posts on GitHub, fixes, and new smart contracts on dev or mainet...`,
-      readMoreLink: '',
-      submittedOnTs: 1715084891,
-      fillPerks: `The creator of the bounty will receive 5 copies of the album. 
-        The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.  
-        Contributors ranked 6th to 20th will receive 2 copies each. 
-        Contributors ranked 21st to 50th will receive 1 copy each. 
-        Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy. 
-        50 copies donated to BiTz Monthly Leaderboard`,
-    });
-
-    allBounties.push({
-      bountySubmitter:
         'erd13ga0m7hjvjg9x47ngzv7mehamh4klctdn4m0gufwr4ukfg9x5yqs45gnga',
       bountyId: 'b10',
       title: 'Me and my tradition',
@@ -327,21 +222,6 @@ export function getDataBounties() {
       readMoreLink: '',
       submittedOnTs: 1715329474,
       fillPerks: `The creator of the bounty will receive 5 copies of the album. 
-        The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.  
-        Contributors ranked 6th to 20th will receive 2 copies each. 
-        Contributors ranked 21st to 50th will receive 1 copy each. 
-        Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy. 
-        50 copies donated to BiTz Monthly Leaderboard`,
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd1dzmvw7gfrfv6tjxvah9rmwd45xqzs6q098925ucmsu69s48776dqlytnn2',
-      bountyId: 'b12',
-      title: 'EGLD Fear&Greed Index',
-      summary: `A EGLD market sentiment gauge, similar to the BTC Fear&Greed Index.`,
-      readMoreLink: '',
-      submittedOnTs: 1715329474,
-      fillPerks: `The creator of the bounty will receive 5 copies. 
         The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.  
         Contributors ranked 6th to 20th will receive 2 copies each. 
         Contributors ranked 21st to 50th will receive 1 copy each. 

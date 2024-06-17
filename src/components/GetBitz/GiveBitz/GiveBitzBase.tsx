@@ -51,9 +51,10 @@ const GiveBitzBase = () => {
           };
         }),
       );
-      const sortedDataBounties = _dataBounties.sort(
-        (a, b) => (b.receivedBitzSum ?? 0) - (a.receivedBitzSum ?? 0),
-      );
+      const sortedDataBounties = _dataBounties;
+      // .sort(
+      //   (a, b) => (b.receivedBitzSum ?? 0) - (a.receivedBitzSum ?? 0),
+      // );
 
       setDataBounties(sortedDataBounties);
     };
