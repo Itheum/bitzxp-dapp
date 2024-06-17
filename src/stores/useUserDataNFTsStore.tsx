@@ -5,12 +5,12 @@ import { DATA_NFT_COLLECTION_ID } from 'config';
 
 interface UserDataNFTsStore {
   nfts: any[];
-  getUserDataNfts: (publicKey: PublicKey, network: string) => void;
+  getUserDataNfts: (publicKey: PublicKey) => void;
 }
 
 const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
   nfts: [],
-  getUserDataNfts: async (publicKey, network) => {
+  getUserDataNfts: async (publicKey) => {
     let nfts = [];
     try {
       const resp = await fetch(

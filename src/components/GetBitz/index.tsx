@@ -65,16 +65,12 @@ import {
   shortenAddress,
   sleep,
 } from './utils';
-import Link from 'next/link';
 import { HoverBorderGradient } from 'components/HoverBorderGradient';
 import useUserBitzStore from 'stores/useUserBitzStore';
 import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import { notify } from 'utils/notifications';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
-import { set } from 'date-fns';
-import { useNetworkConfiguration } from 'contexts/NetworkConfigurationProvider';
 import { DATA_NFT_COLLECTION_ID } from 'config';
-import dynamic from 'next/dynamic';
 
 export interface LeaderBoardItemType {
   playerAddr: string;
@@ -119,8 +115,6 @@ const MEME_IMGS = [
 const GetBitzView = () => {
   const { publicKey, signMessage } = useWallet();
   const address = publicKey?.toBase58();
-  const { networkConfiguration, setNetworkConfiguration } =
-    useNetworkConfiguration();
   const [checkingIfHasGameDataNFT, setCheckingIfHasGameDataNFT] =
     useState<boolean>(true);
   const [hasGameDataNFT, setHasGameDataNFT] = useState<boolean>(false);
@@ -182,7 +176,7 @@ const GetBitzView = () => {
 
   useEffect(() => {
     if (publicKey) {
-      getUserDataNfts(publicKey, networkConfiguration);
+      getUserDataNfts(publicKey);
     }
   }, [publicKey]);
 

@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { PublicKey } from '@solana/web3.js';
 import { DATA_NFT_COLLECTION_ID } from 'config';
+import { EnvironmentsEnum } from 'models/types';
 type Data = {
   nfts?: any;
   message?: any;
@@ -18,7 +19,7 @@ export default async function handler(
     const publicKey = new PublicKey(publicKeyb58);
     const network = process.env.NEXT_PUBLIC_NETWORK;
     const url =
-      network === 'mainnet'
+      network === EnvironmentsEnum.mainnet
         ? 'https://mainnet.helius-rpc.com'
         : 'https://devnet.helius-rpc.com';
     const resp = await fetch(`${url}/?api-key=${process.env.HELIUS_API_KEY}`, {

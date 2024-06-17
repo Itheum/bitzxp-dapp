@@ -1,4 +1,4 @@
-import { EnvironmentsEnum } from 'config';
+import { EnvironmentsEnum } from 'models/types';
 
 export interface GiveBitzCreatorCampaign {
   creatorAddress: string;
@@ -25,10 +25,7 @@ export interface GiveBitzDataBounty {
 export function getCreatorCampaigns() {
   const allCreatorCampaigns: GiveBitzCreatorCampaign[] = [];
 
-  if (
-    process.env.NEXT_PUBLIC_ENV_NETWORK &&
-    process.env.NEXT_PUBLIC_ENV_NETWORK === EnvironmentsEnum.devnet
-  ) {
+  if (process.env.NEXT_PUBLIC_ENV_NETWORK === EnvironmentsEnum.devnet) {
     allCreatorCampaigns.push({
       creatorAddress:
         'erd1xdq4d7uewptx9j9k23aufraklda9leumqc7eu3uezt2kf4fqxz2sex2rxl',
@@ -78,10 +75,7 @@ export function getCreatorCampaigns() {
 export function getDataBounties() {
   const allBounties: GiveBitzDataBounty[] = [];
 
-  if (
-    process.env.NEXT_PUBLIC_ENV_NETWORK &&
-    process.env.NEXT_PUBLIC_ENV_NETWORK === EnvironmentsEnum.devnet
-  ) {
+  if (process.env.NEXT_PUBLIC_ENV_NETWORK === EnvironmentsEnum.devnet) {
     allBounties.push({
       bountySubmitter:
         'erd1xdq4d7uewptx9j9k23aufraklda9leumqc7eu3uezt2kf4fqxz2sex2rxl',

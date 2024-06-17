@@ -12,7 +12,6 @@ import pkg from '../../../package.json';
 // Store
 import useUserSOLBalanceStore from '../../stores/useUserSOLBalanceStore';
 import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
-import { useNetworkConfiguration } from 'contexts/NetworkConfigurationProvider';
 
 export const HomeView: FC = ({}) => {
   const wallet = useWallet();
@@ -21,13 +20,12 @@ export const HomeView: FC = ({}) => {
   const balance = useUserSOLBalanceStore((s) => s.balance);
   const { getUserSOLBalance } = useUserSOLBalanceStore();
   const { getUserDataNfts } = useUserDataNFTsStore();
-  const { networkConfiguration, setNetworkConfiguration } =
-    useNetworkConfiguration();
+
   useEffect(() => {
     if (wallet.publicKey) {
       console.log(wallet.publicKey.toBase58());
       getUserSOLBalance(wallet.publicKey, connection);
-      getUserDataNfts(wallet.publicKey, networkConfiguration);
+      getUserDataNfts(wallet.publicKey);
     }
   }, [wallet.publicKey, connection, getUserSOLBalance, getUserDataNfts]);
 

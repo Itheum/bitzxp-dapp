@@ -18,7 +18,9 @@ export const NetworkConfigurationProvider: FC<{ children: ReactNode }> = ({
 }) => {
   const [networkConfiguration, setNetworkConfiguration] = useLocalStorage(
     'network',
-    process.env.NEXT_PUBLIC_ENV_NETWORK,
+    process.env.NEXT_PUBLIC_ENV_NETWORK === 'mainnet'
+      ? 'mainnet-beta'
+      : process.env.NEXT_PUBLIC_ENV_NETWORK,
   );
 
   return (

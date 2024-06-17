@@ -5,17 +5,15 @@ import { itheumPreaccess, itheumViewDataInNewTab } from 'utils/ItheumViewData';
 import { verify } from '@noble/ed25519';
 import { notify } from '../../utils/notifications';
 import bs58 from 'bs58';
-import { useNetworkConfiguration } from 'contexts/NetworkConfigurationProvider';
 
 export const GalleryView: FC = ({}) => {
   const { publicKey, signMessage } = useWallet();
   const nfts = useUserDataNFTsStore((s) => s.nfts);
   const { getUserDataNfts } = useUserDataNFTsStore();
-  const { networkConfiguration, setNetworkConfiguration } =
-    useNetworkConfiguration();
+
   useEffect(() => {
     if (publicKey) {
-      getUserDataNfts(publicKey, networkConfiguration);
+      getUserDataNfts(publicKey);
     }
   }, [publicKey, getUserDataNfts]);
 

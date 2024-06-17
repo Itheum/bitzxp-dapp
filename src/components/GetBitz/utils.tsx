@@ -1,3 +1,5 @@
+import { EnvironmentsEnum } from 'models/types';
+
 export const computeRemainingCooldown = (
   startTime: number,
   cooldown: number,
@@ -14,11 +16,11 @@ export function shortenAddress(value: string, length: number = 6): string {
 
 export const getApiDataMarshal = (networkMode: string) => {
   const envKey =
-    networkMode === 'mainnet'
+    networkMode === EnvironmentsEnum.mainnet
       ? 'NEXT_PUBLIC_DATAMARSHAL_MAINNET_API'
       : 'NEXT_PUBLIC_DATAMARSHAL_DEVNET_API';
   const defaultUrl =
-    networkMode === 'mainnet'
+    networkMode === EnvironmentsEnum.mainnet
       ? 'https://api.itheumcloud.com/datamarshalapi/router/v1'
       : 'https://api.itheumcloud-stg.com/datamarshalapi/router/v1';
   return process.env[envKey] || defaultUrl;
@@ -33,11 +35,11 @@ export const sleep = (sec: number) => {
 
 export const getApiWeb2Apps = (networkMode: string) => {
   const envKey =
-    networkMode === 'mainnet'
+    networkMode === EnvironmentsEnum.mainnet
       ? 'NEXT_PUBLIC_WEB2_APPS_MAINNET_API'
       : 'NEXT_PUBLIC_WEB2_APPS_DEVNET_API';
   const defaultUrl =
-    networkMode === 'mainnet'
+    networkMode === EnvironmentsEnum.mainnet
       ? 'https://api.itheumcloud.com'
       : 'https://api.itheumcloud-stg.com';
 
