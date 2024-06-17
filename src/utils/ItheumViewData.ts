@@ -1,6 +1,6 @@
 import { PublicKey } from '@solana/web3.js';
 import { getApiDataMarshal } from 'components/GetBitz/utils';
-import { EnvironmentsEnum } from 'config';
+import { EnvironmentsEnum } from 'models/types';
 
 export async function itheumPreaccess(
   networkMode: EnvironmentsEnum = EnvironmentsEnum.devnet,
