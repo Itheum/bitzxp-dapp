@@ -133,47 +133,17 @@ const Faq: React.FC = () => {
             following utility will be available:
           </p>
           <ol className="mt-5 text-lg">
-            <li className="my-5">
-              1. Top {BIT_GAME_TOP_LEADER_BOARD_GROUP} Movers from
-              &quot;Monthly&quot; LEADERBOARD get Airdropped{' '}
-              <a
-                className="!text-[#7a98df] hover:underline"
-                href="https://datadex.itheum.io/datanfts/marketplace/market"
-                target="blank"
-              >
-                Data NFTs
-              </a>{' '}
-              from previous and upcoming Data Creators.
-            </li>
-            <li className="my-5">
-              2. Get a boost on Monthly{' '}
-              <a
-                className="!text-[#7a98df] hover:underline"
-                href="https://explorer.itheum.io/project-trailblazer"
-                target="blank"
-              >
-                Itheum Trailblazer
-              </a>{' '}
-              Data NFT Quest Rewards.
-            </li>
-            <li className="my-5">
-              3. 3 bonus drops of{' '}
-              <a
-                className="!text-[#7a98df] hover:underline"
-                href="https://datadex.itheum.io/datanfts/marketplace/market"
-                target="blank"
-              >
-                Data NFTs
-              </a>{' '}
-              from previous and upcoming Data Creators sent randomly to users
-              from top 100 &quot;All Time&quot; LEADERBOARD
-            </li>
-            <li className="my-5">
-              4. Bragging rights as you climb to the top of the LEADERBOARD!
-            </li>
             <li>
-              5. Power Up Data Bounties with {`<BiTz>`} XP below - Give{' '}
+              1. Power Up Data Bounties with {`<BiTz>`} XP below - Give{' '}
               {`<BiTz>`}
+            </li>
+            <li className="my-5">
+              2. Top leaderboard gets rewards as part of monthly competitions
+              for Data NFT airdrops or $ITHEUM airdrop campaigns. (Check special
+              “Perks” section above for any active competitions happening)
+            </li>
+            <li className="my-5">
+              3. Bragging rights as you climb to the top of the LEADERBOARD!
             </li>
           </ol>
           <p className="mt-5">
