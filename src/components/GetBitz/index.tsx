@@ -55,7 +55,7 @@ import resultLoading from '../../../public/getbitz/pixel-loading.gif';
 import LeaderBoardTable from './LeaderBoardTable';
 
 import { cn } from 'utils';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import {
   BlobDataType,
   ExtendedViewDataReturnType,
@@ -71,6 +71,7 @@ import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import { notify } from 'utils/notifications';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import { DATA_NFT_COLLECTION_ID } from 'config';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 export interface LeaderBoardItemType {
   playerAddr: string;
@@ -484,6 +485,7 @@ const GetBitzView = () => {
     }
   }
 
+  const { setVisible } = useWalletModal();
   function gamePlayImageSprites() {
     let _viewDataRes = viewDataRes;
 
@@ -495,7 +497,9 @@ const GetBitzView = () => {
     if (!address) {
       return (
         <img
-          onClick={() => {}}
+          onClick={() => {
+            setVisible(true);
+          }}
           className="z-5 rounded-[3rem] w-full cursor-pointer"
           src={ImgLogin.src}
           alt={'Connect your wallet to play'}

@@ -84,7 +84,7 @@ const GiveBitzLowerCard: React.FC<GiveBitzLowerCardProps> = (props) => {
           shapeOptions: {
             image: [
               {
-                src: bitzLogo,
+                src: bitzLogo.src,
                 width: 30,
                 height: 30,
               },
