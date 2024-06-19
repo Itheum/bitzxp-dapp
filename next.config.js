@@ -26,6 +26,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     version,
   },
+  optimization: {
+    minimize: false,
+  },
 };
 
 module.exports = nextConfig;
