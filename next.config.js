@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const { webpack } = require('next/dist/compiled/webpack/webpack');
 const { version } = require('./package.json');
 
 const nextConfig = {
@@ -26,8 +27,10 @@ const nextConfig = {
   publicRuntimeConfig: {
     version,
   },
-  optimization: {
-    minimize: false,
+  webpack: {
+    optimization: {
+      minimize: false,
+    },
   },
 };
 
