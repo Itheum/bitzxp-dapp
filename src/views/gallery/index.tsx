@@ -5,6 +5,7 @@ import { itheumPreaccess, itheumViewDataInNewTab } from 'utils/ItheumViewData';
 import { verify } from '@noble/ed25519';
 import { notify } from '../../utils/notifications';
 import bs58 from 'bs58';
+import { EnvironmentsEnum } from 'models/types';
 
 export const GalleryView: FC = ({}) => {
   const { publicKey, signMessage } = useWallet();
@@ -18,7 +19,9 @@ export const GalleryView: FC = ({}) => {
   }, [publicKey, getUserDataNfts]);
 
   const signPreaccess = useCallback(async () => {
-    const nonce = await itheumPreaccess();
+    const nonce = await itheumPreaccess(
+      process.env.NEXT_PUBLIC_ENV_NETWORK as EnvironmentsEnum,
+    );
     if (!publicKey) throw new Error('Wallet not connected!');
     if (!signMessage)
       throw new Error('Wallet does not support message signing!');

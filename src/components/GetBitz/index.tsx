@@ -441,7 +441,9 @@ const GetBitzView = () => {
 
   async function viewData(viewDataArgs: any, requiredDataNFT: any) {
     try {
-      const preAccessNonce = await itheumPreaccess();
+      const preAccessNonce = await itheumPreaccess(
+        process.env.NEXT_PUBLIC_ENV_NETWORK as EnvironmentsEnum,
+      );
       const message = new TextEncoder().encode(preAccessNonce);
       const signature = await signMessage(message);
       if (!preAccessNonce || !signature || !requiredDataNFT || !address)
