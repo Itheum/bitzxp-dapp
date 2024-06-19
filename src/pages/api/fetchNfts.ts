@@ -42,9 +42,7 @@ export default async function handler(
     const nfts = data.result.items.filter(
       (nft) =>
         nft.grouping.find((g) => g.group_key === 'collection').group_value ===
-          DATA_NFT_COLLECTION_ID &&
-        nft.content.json_uri.includes('GetBitz') &&
-        !nft.content.json_uri.includes('Main'),
+        DATA_NFT_COLLECTION_ID,
     );
     res.status(200).json({ nfts: nfts });
   } catch (e) {
