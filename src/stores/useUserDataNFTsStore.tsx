@@ -18,6 +18,7 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
       );
       const data = await resp.json();
       nfts = data.nfts;
+      console.log(nfts);
     } catch (e) {
       notify({
         type: 'error',

@@ -17,7 +17,8 @@ export default async function handler(
       query: { publicKeyb58 },
     } = req;
     const publicKey = new PublicKey(publicKeyb58);
-    const network = process.env.NEXT_PUBLIC_NETWORK;
+    const network = process.env.NEXT_PUBLIC_ENV_NETWORK;
+    console.log(process.env.NEXT_PUBLIC_ENV_NETWORK);
     const url =
       network === EnvironmentsEnum.mainnet
         ? 'https://mainnet.helius-rpc.com'

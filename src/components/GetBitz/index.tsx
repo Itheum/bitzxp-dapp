@@ -69,6 +69,7 @@ import { notify } from 'utils/notifications';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import { DATA_NFT_COLLECTION_ID } from 'config';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import { EnvironmentsEnum } from 'models/types';
 
 export interface LeaderBoardItemType {
   playerAddr: string;
@@ -453,6 +454,7 @@ const GetBitzView = () => {
         publicKey,
         viewDataArgs.fwdHeaderKeys,
         viewDataArgs.headers,
+        process.env.NEXT_PUBLIC_ENV_NETWORK as EnvironmentsEnum,
       );
       let blobDataType = BlobDataType.TEXT;
       let data;

@@ -15,6 +15,7 @@ import { BlobDataType, getApiWeb2Apps, sleep } from '../utils';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import bs58 from 'bs58';
 import { DATA_NFT_COLLECTION_ID } from 'config';
+import { EnvironmentsEnum } from 'models/types';
 
 const GiveBitzBase = () => {
   const { publicKey, signMessage } = useWallet();
@@ -344,6 +345,7 @@ const GiveBitzBase = () => {
         publicKey,
         viewDataArgs.fwdHeaderKeys,
         viewDataArgs.headers,
+        process.env.NEXT_PUBLIC_ENV_NETWORK as EnvironmentsEnum,
       );
       let blobDataType = BlobDataType.TEXT;
       let data;
