@@ -41,9 +41,6 @@ import Meme23 from '../../../public/getbitz/memes/23.jpg';
 import Meme24 from '../../../public/getbitz/memes/24.jpg';
 import Meme25 from '../../../public/getbitz/memes/25.jpg';
 import Meme26 from '../../../public/getbitz/memes/26.jpg';
-import Meme27 from '../../../public/getbitz/memes/27.jpg';
-import Meme28 from '../../../public/getbitz/memes/28.jpg';
-import Meme29 from '../../../public/getbitz/memes/29.jpg';
 import Meme3 from '../../../public/getbitz/memes/3.jpg';
 import Meme4 from '../../../public/getbitz/memes/4.jpg';
 import Meme5 from '../../../public/getbitz/memes/5.jpg';
@@ -55,7 +52,7 @@ import resultLoading from '../../../public/getbitz/pixel-loading.gif';
 import LeaderBoardTable from './LeaderBoardTable';
 
 import { cn } from 'utils';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import {
   BlobDataType,
   ExtendedViewDataReturnType,
@@ -71,6 +68,7 @@ import useUserDataNFTsStore from 'stores/useUserDataNFTsStore';
 import { notify } from 'utils/notifications';
 import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import { DATA_NFT_COLLECTION_ID } from 'config';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 
 export interface LeaderBoardItemType {
   playerAddr: string;
@@ -107,9 +105,6 @@ const MEME_IMGS = [
   Meme24,
   Meme25,
   Meme26,
-  Meme27,
-  Meme28,
-  Meme29,
 ];
 
 const GetBitzView = () => {
@@ -484,6 +479,7 @@ const GetBitzView = () => {
     }
   }
 
+  const { setVisible } = useWalletModal();
   function gamePlayImageSprites() {
     let _viewDataRes = viewDataRes;
 
@@ -491,11 +487,12 @@ const GetBitzView = () => {
     let _gameDataFetched = gameDataFetched;
     let _isFetchingDataMarshal = isFetchingDataMarshal;
     let _isMemeBurnHappening = isMemeBurnHappening;
-    console.log(address);
     if (!address) {
       return (
         <img
-          onClick={() => {}}
+          onClick={() => {
+            setVisible(true);
+          }}
           className="z-5 rounded-[3rem] w-full cursor-pointer"
           src={ImgLogin.src}
           alt={'Connect your wallet to play'}
@@ -943,7 +940,7 @@ const GetBitzView = () => {
     // Get All Time leaderboard
     try {
       // S: ACTUAL LOGIC
-      console.log('AXIOS CALL -----> xpGamePrivate/leaderBoard');
+      console.log('GET CALL -----> xpGamePrivate/leaderBoard');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/leaderBoard`,
         callConfig,
@@ -967,7 +964,7 @@ const GetBitzView = () => {
     // Get Monthly Leaderboard
     try {
       // S: ACTUAL LOGIC
-      console.log('AXIOS CALL -----> xpGamePrivate/monthLeaderBoard');
+      console.log('GET CALL -----> xpGamePrivate/monthLeaderBoard');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/monthLeaderBoard?MMYYString=${MMYYString}`,
         callConfig,
@@ -998,7 +995,7 @@ const GetBitzView = () => {
       },
     };
     try {
-      console.log('AXIOS CALL -----> xpGamePrivate/playerRankOnLeaderBoard');
+      console.log('GET CALL -----> xpGamePrivate/playerRankOnLeaderBoard');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/playerRankOnLeaderBoard?playerAddr=${address}`,
         callConfig,

@@ -12,18 +12,18 @@ const Faq: React.FC = () => {
         <>
           <p>
             Think of them as XP (Experience Points) of the Itheum Protocol, we
-            also like to call them &quot;Data Ownership OG (Original Gangster)
-            XP&quot; and if you consider yourself an Itheum OG and love Data
-            Ownership, then we absolutely think you are a pioneer and {`<BiTz>`}{' '}
-            is the Itheum XP system for you!!
+            also like to call them &quot;Data Ownership OG XP&quot; and if you
+            consider yourself an Itheum OG and love Data Ownership, then we
+            absolutely think you are a pioneer and {`<BiTz>`} is the Itheum XP
+            system for you!
           </p>
           <p className="mt-5">
             You need to use Data NFT and Itheum Core Infrastructure to collect
-            your {`<BiTz>`} XP, and this exact Web3/Blockchain based product
+            your {`<BiTz>`} XP, and this exact Web3 / Blockchain based product
             stack can be used by you to empower you to take ownership of and
-            tokenize your data. So in essence, you are using Data Ownership +
-            Data Tokenization technology and learning about how you can take
-            ownership of your data! Welcome Itheum Data Ownership OG!
+            tokenize your data. So, in essence, you are using Data Ownership +
+            Data Tokenization technology and learning how you can take ownership
+            of your data! Welcome Itheum Data Ownership OG!
           </p>
         </>
       ),
@@ -50,55 +50,48 @@ const Faq: React.FC = () => {
       ),
     },
     {
-      title: 'How can I collect `<BiTz>` Points?',
+      title: 'How can I collect <BiTz> Points?',
       content: (
         <>
-          {' '}
           <p>
-            You need to hold a {`<BiTz>`} compatible Data NFT in your wallet to
+            You need to HODL a {`<BiTz>`} compatible Data NFT in your wallet to
             play the Get {`<BiTz>`} game (you are on this page now). This Data
             NFT was airdropped in waves to OGs of the Itheum Protocol, but fear
-            not, you can also get it on the{' '}
+            not, you can also get it through{' '}
             <a
               className="!text-[#7a98df] hover:underline"
-              href="https://datadex.itheum.io/datanfts/marketplace/DATANFTFT-e936d4-07"
+              href="https://drip.haus/itheum"
               target="blank"
             >
-              Itheum Data NFT Marketplace
-            </a>{' '}
+              Itheum&apos;s DRiP Haus channel{' '}
+            </a>
             or any NFT Marketplace (if the OGs broke our hearts and parted ways
-            with their Data NFTs). If this &quot;Gen 1&quot; {`<BiTz>`} Data NFT
-            is successful, there may be a follow-up Series of {`<BiTz>`} Data
-            NFTs launched and airdropped as well.
+            with their Data NFTs). If you missed the previous {`<BiTz>`} Data
+            NFT drops, you can subscribe to{' '}
+            <a
+              className="!text-[#7a98df] hover:underline"
+              href="https://drip.haus/itheum"
+              target="blank"
+            >
+              our DRiP Haus channel{' '}
+            </a>
+            where you can get access to future drops.
           </p>
           <p className="mt-5">
             Once you have the Data NFT in your wallet, you can play the Game
-            every 6 Hours ({BIT_GAME_WINDOW_HOURS} Hours in &quot;Launch
-            Window&quot;). You have to burn a Meme and sacrifice it to the{' '}
-            {`<BiTz>`} Generator God and then based on pure random chance, you
-            win {`<BiTz>`}!
+            every {BIT_GAME_WINDOW_HOURS} Hours. You have to burn a Meme and
+            sacrifice it to the {`<BiTz>`} Generator God and then based on pure
+            random chance, you win {`<BiTz>`}!
+          </p>
+          <p className="mt-5">
+            In the near future, the Get {`<BiTz>`} game won&apos;t be the only
+            way to collect {`<BiTz>`} points, if you stay &quot;active&quot; on
+            the Itheum Protocol, you will be rewarded with bonus {`<BiTz>`}{' '}
+            points as well.
           </p>
           <p className="mt-5">
             You DO NOT need to spend any gas to Play the Get {`<BiTz>`} ! SAY
             WAT?!
-          </p>
-          <p className="mt-5">
-            But in the near future, the Get {`<BiTz>`} game won&apos;t be the
-            only way to collect {`<BiTz>`} points, if you stay
-            &quot;active&quot; on the Itheum Protocol, you will be rewarded with
-            bonus {`<BiTz>`} points as well. For example, if you use the{' '}
-            <a
-              className="!text-[#7a98df] hover:underline"
-              href="https://datadex.itheum.io/datanfts/marketplace/market"
-              target="blank"
-            >
-              Data DEX
-            </a>{' '}
-            to explore and &quot;favorite&quot; the Data NFTs and Data Creators
-            you like or if you use features like &quot;Data Uptime Checks&quot;
-            or use Data Widgets inside the Itheum Explorer, all these Itheum
-            Protocol &quot;activity&quot; will have {`<BiTz>`} bonus points
-            attached to it and sent to you!
           </p>
         </>
       ),
@@ -107,22 +100,23 @@ const Faq: React.FC = () => {
       title: 'Where can I play the Get <BiTz> Game?',
       content: (
         <>
-          {' '}
           <p>
-            Currently, you can play it on Itheum Explorer&apos;s Get {`<BiTz>`}{' '}
-            Data Widget{' '}
+            Currently, you can play it on the{' '}
+            <a
+              className="!text-[#7a98df] hover:underline"
+              href="https://itheum.io/getxp"
+              target="blank"
+            >
+              Get {`<BiTz>`} dApp on Solana Network
+            </a>{' '}
+            or on{' '}
             <a
               className="!text-[#7a98df] hover:underline"
               href="https://explorer.itheum.io/getbitz"
               target="blank"
             >
-              explorer.itheum.io/getbitz
-            </a>
-          </p>
-          <p className="mt-5">
-            Also note that Itheum Explorer is available on xPortal Hub as well,
-            so with a few taps on your xPortal mobile wallet, you can open the
-            game and Get {`<BiTz>`}!
+              the Get {`<BiTz>`} dApp on the MultiversX blockchain
+            </a>{' '}
           </p>
         </>
       ),
@@ -134,52 +128,22 @@ const Faq: React.FC = () => {
           <p>
             Itheum {`<BiTz>`} is like an XP system and you collect {`<BiTz>`}{' '}
             each time you interact with certain features of Itheum Protocol.
-            Like all XP Systems, there will be LEADERBOARD-based rewards that
-            are tied to use cases within the Itheum protocol. At launch, the
+            Like all XP Systems, there is a LEADERBOARD-based rewards system
+            that is tied to use cases within the Itheum protocol. At launch, the
             following utility will be available:
           </p>
           <ol className="mt-5 text-lg">
-            <li className="my-5">
-              1. Top {BIT_GAME_TOP_LEADER_BOARD_GROUP} Movers from
-              &quot;Monthly&quot; LEADERBOARD get Airdropped{' '}
-              <a
-                className="!text-[#7a98df] hover:underline"
-                href="https://datadex.itheum.io/datanfts/marketplace/market"
-                target="blank"
-              >
-                Data NFTs
-              </a>{' '}
-              from previous and upcoming Data Creators.
-            </li>
-            <li className="my-5">
-              2. Get a boost on Monthly{' '}
-              <a
-                className="!text-[#7a98df] hover:underline"
-                href="https://explorer.itheum.io/project-trailblazer"
-                target="blank"
-              >
-                Itheum Trailblazer
-              </a>{' '}
-              Data NFT Quest Rewards.
-            </li>
-            <li className="my-5">
-              3. 3 bonus drops of{' '}
-              <a
-                className="!text-[#7a98df] hover:underline"
-                href="https://datadex.itheum.io/datanfts/marketplace/market"
-                target="blank"
-              >
-                Data NFTs
-              </a>{' '}
-              from previous and upcoming Data Creators sent randomly to users
-              from top 100 &quot;All Time&quot; LEADERBOARD
-            </li>
-            <li className="my-5">
-              4. Bragging rights as you climb to the top of the LEADERBOARD!
-            </li>
             <li>
-              5. Power Up Data Bounties with {`<BiTz>`} XP below - Give{' '}
+              1. Power Up Data Bounties with {`<BiTz>`} XP below - Give{' '}
               {`<BiTz>`}
+            </li>
+            <li className="my-5">
+              2. Top leaderboard gets rewards as part of monthly competitions
+              for Data NFT airdrops or $ITHEUM airdrop campaigns. (Check special
+              “Perks” section above for any active competitions happening)
+            </li>
+            <li className="my-5">
+              3. Bragging rights as you climb to the top of the LEADERBOARD!
             </li>
           </ol>
           <p className="mt-5">
@@ -203,11 +167,17 @@ const Faq: React.FC = () => {
       content: (
         <>
           <p>
-            Nope, there are more than enough meme coins out there and we
-            don&apos;t need more. Itheum {`<BiTz>`} are simple XP to
-            &quot;gamify&quot; usage of the Itheum Protocol infrastructure. The
-            $ITHEUM token is the primary utility token of the entire Itheum
-            Ecosystem.
+            Nope, there are plenty of meme coins out there already. Itheum{' '}
+            {`<BiTz>`} are XP points aiming to &quot;gamify&quot; usage of the
+            Itheum Protocol infrastructure. The{' '}
+            <a
+              className="!text-[#7a98df] hover:underline"
+              href="https://coinmarketcap.com/currencies/itheum/"
+              target="blank"
+            >
+              $ITHEUM token
+            </a>{' '}
+            is the primary utility token of the entire Itheum Ecosystem.
           </p>
         </>
       ),
@@ -234,12 +204,10 @@ const Faq: React.FC = () => {
           <p>
             If you do this, you will &quot;fragment&quot; your XP and you wont
             get much benefits so it&apos;s best you use your primary identity
-            wallet to collect {`<BiTz>`} XP. BUT, we also know that many
-            &quot;hunters&quot; may try and do this to game (sybil attack) the
-            LEADERBOARD and it will disadvantage the regular genuine users. We
-            are rolling out some new blockchain powered &quot;liveliness &
-            reputation signalling&quot; features that should prevent or
-            drastically reduce such XP sybil attacks.
+            wallet to collect {`<BiTz>`} XP. We will also be rolling out soon
+            some new blockchain powered &quot;liveliness & reputation
+            signalling&quot; features that should prevent or drastically reduce
+            possible XP sybil attacks.
           </p>
         </>
       ),
@@ -250,9 +218,9 @@ const Faq: React.FC = () => {
         <>
           <p>
             Lost your primary wallet or want to move Itheum {`<BiTz>`} to your
-            new wallet? unfortunately, this is not possible right now (it MAY be
-            in the future - but no guarantee). So make sure you get {`<BiTz>`}{' '}
-            in the wallet you treasure the most.
+            new wallet? unfortunately, this is not possible right now. So stay
+            SAFU & make sure you get {`<BiTz>`} in the wallet you treasure the
+            most.
           </p>
         </>
       ),
@@ -279,8 +247,7 @@ const Faq: React.FC = () => {
             love for the Get {`<BiTz>`} app to become a hub of
             &quot;Mini-Games&quot; where you win {`<BiTz>`} XP. Are you an A.I
             or a Game Dev and want to build a game layer for the Itheum{' '}
-            {`<BiTz>`} XP system? Reach out and you could get a grant from via
-            the{' '}
+            {`<BiTz>`} XP system? Reach out and you could get a grant via the{' '}
             <a
               className="!text-[#7a98df] hover:underline"
               href="https://docs.itheum.io/product-docs/protocol/governance/itheum-xpand-dao/itheum-xpand-grants-program"

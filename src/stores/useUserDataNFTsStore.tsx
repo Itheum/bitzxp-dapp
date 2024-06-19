@@ -26,7 +26,6 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
       });
     }
     set((s) => {
-      console.log(nfts);
       s.nfts = nfts;
     });
   },
