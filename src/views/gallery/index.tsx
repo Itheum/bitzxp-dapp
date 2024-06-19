@@ -48,7 +48,7 @@ export const GalleryView: FC = ({}) => {
         message: 'View Data failed!',
         description: e?.message,
       });
-      console.log('error', `View data failed! ${e?.message}`);
+      console.error('error', `View data failed! ${e?.message}`);
     }
   };
 
