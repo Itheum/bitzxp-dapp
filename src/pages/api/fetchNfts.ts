@@ -40,12 +40,15 @@ export default async function handler(
       }),
     });
     const data = await resp.json();
-    const nfts = data.result.items.filter(
-      (nft) =>
-        nft.grouping.find((g) => g.group_key === 'collection').group_value ===
-        DATA_NFT_COLLECTION_ID,
-    );
-    res.status(200).json({ nfts: nfts });
+    const nfts = data.result.items.filter((nft) => {
+      const collection = nft.grouping.find((g) => g.group_key === 'collection');
+      if (collection) {
+        return collection.group_value === DATA_NFT_COLLECTION_ID;
+      } else {
+        return false;
+      }
+    });
+    res.status(200).json({ nfts: data.result.items });
   } catch (e) {
     res.status(500).json({ message: e });
   }
