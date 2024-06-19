@@ -27,11 +27,6 @@ const nextConfig = {
   publicRuntimeConfig: {
     version,
   },
-  webpack: {
-    optimization: {
-      minimize: false,
-    },
-  },
 };
 
 module.exports = nextConfig;

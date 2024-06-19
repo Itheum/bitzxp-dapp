@@ -177,6 +177,7 @@ const GetBitzView = () => {
   }, [publicKey]);
 
   useEffect(() => {
+    if (nfts === undefined) return;
     if (!populatedBitzStore) {
       if (publicKey && nfts.length > 0) {
         updateBitzBalance(-2);
