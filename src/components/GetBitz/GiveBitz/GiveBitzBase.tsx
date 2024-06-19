@@ -41,7 +41,10 @@ const GiveBitzBase = () => {
       const _dataBounties: GiveBitzDataBounty[] = await Promise.all(
         getDataBounties().map(async (item: GiveBitzDataBounty) => {
           const response = await fetchBitSumAndGiverCounts({
-            getterAddr: item.bountySubmitter,
+            getterAddr:
+              item.bountyId === 'b20'
+                ? 'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2'
+                : item.bountySubmitter,
             campaignId: item.bountyId,
           });
           return {
@@ -93,9 +96,7 @@ const GiveBitzBase = () => {
         },
       };
       try {
-        console.log(
-          'AXIOS CALL -----> xpGamePrivate/givenBits: giverAddr only',
-        );
+        console.log('GET CALL -----> xpGamePrivate/givenBits: giverAddr only');
         const res = await fetch(
           `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/givenBits?giverAddr=${address}`,
           callConfig,
@@ -125,7 +126,7 @@ const GiveBitzBase = () => {
     };
     try {
       // S: ACTUAL LOGIC
-      console.log('AXIOS CALL -----> xpGamePrivate/giverLeaderBoard');
+      console.log('GET CALL -----> xpGamePrivate/giverLeaderBoard');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/giverLeaderBoard`,
         callConfig,
@@ -194,7 +195,7 @@ const GiveBitzBase = () => {
     };
     try {
       console.log(
-        'AXIOS CALL -----> xpGamePrivate/givenBits: giverAddr && getterAddr',
+        'GET CALL -----> xpGamePrivate/givenBits: giverAddr && getterAddr',
       );
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/givenBits?giverAddr=${address}&getterAddr=${getterAddr}&campaignId=${campaignId}`,
@@ -225,7 +226,7 @@ const GiveBitzBase = () => {
     try {
       // S: ACTUAL LOGIC
       console.log(
-        'AXIOS CALL -----> xpGamePrivate/getterLeaderBoard : getterAddr =',
+        'GET CALL -----> xpGamePrivate/getterLeaderBoard : getterAddr =',
         getterAddr,
       );
       const res = await fetch(
@@ -351,11 +352,9 @@ const GiveBitzBase = () => {
         if (contentType.includes('application/json')) {
           data = await res.json();
         }
-        console.log(res);
         return { data, blobDataType, contentType };
       } else {
-        console.log('viewData threw catch error');
-        console.error(res.statusText);
+        console.error('viewData threw catch error', res.statusText);
 
         return undefined;
       }

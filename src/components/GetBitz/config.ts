@@ -77,8 +77,8 @@ export function getDataBounties() {
 
   if (process.env.NEXT_PUBLIC_ENV_NETWORK === EnvironmentsEnum.devnet) {
     allBounties.push({
-      bountySubmitter: 'At3pzpRWg4N3WSZoBZiNKLotzw4VHBSjLJVZejd3YXVL',
-      bountyId: 'b10',
+      bountySubmitter: '3ibP6nxaKocQPA8S5ntXSo1Xd4aYSa93QKjPzDaPqAmB',
+      bountyId: 'b20',
       title: 'Alpha Gamer Passport',
       summary: `Create a Data NFT which can be used by gamers as a Data Vault in order to crowdsource their data for the AI industry and generate revenue for the data they share.`,
       readMoreLink: '',
@@ -125,8 +125,8 @@ export function getDataBounties() {
     return allBounties;
   } else {
     allBounties.push({
-      bountySubmitter: 'At3pzpRWg4N3WSZoBZiNKLotzw4VHBSjLJVZejd3YXVL',
-      bountyId: 'b12',
+      bountySubmitter: '3ibP6nxaKocQPA8S5ntXSo1Xd4aYSa93QKjPzDaPqAmB',
+      bountyId: 'b20',
       title: 'Alpha Gamer Passport',
       summary: `Create a Data NFT which can be used by gamers as a Data Vault in order to crowdsource their data for the AI industry and generate revenue for the data they share.`,
       readMoreLink: '',

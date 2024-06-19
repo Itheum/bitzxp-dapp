@@ -46,7 +46,10 @@ const GiveBitzLowerCard: React.FC<GiveBitzLowerCardProps> = (props) => {
   useEffect(() => {
     async function fetchData() {
       const _fetchGivenBitsForCreator = await fetchGivenBitsForGetter({
-        getterAddr: bountySubmitter,
+        getterAddr:
+          bountyId === 'b20'
+            ? 'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2'
+            : bountySubmitter,
         campaignId: bountyId,
       });
       setBitzGivenToCreator(_fetchGivenBitsForCreator);
@@ -62,7 +65,10 @@ const GiveBitzLowerCard: React.FC<GiveBitzLowerCardProps> = (props) => {
 
     const _isPowerUpSuccess = await sendPowerUp({
       bitsVal: bitzVal,
-      bitsToWho: bountySubmitter,
+      bitsToWho:
+        bountyId === 'b20'
+          ? 'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2'
+          : bountySubmitter,
       bitsToCampaignId: bountyId,
       isNewGiver:
         bitzGivenToCreator === undefined || bitzGivenToCreator <= 0 ? 1 : 0,

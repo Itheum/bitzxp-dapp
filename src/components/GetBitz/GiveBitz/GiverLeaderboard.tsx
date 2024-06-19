@@ -32,7 +32,10 @@ const GiverLeaderboard: React.FC<GiverLeaderboardProps> = (props) => {
     setGiverLeaderBoardIsLoading(true);
     const _toLeaderBoardTypeArr: LeaderBoardItemType[] =
       await fetchGetterLeaderBoard({
-        getterAddr: bountySubmitter,
+        getterAddr:
+          bountyId === 'b20'
+            ? 'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2'
+            : bountySubmitter,
         campaignId: bountyId,
       });
     setGetterLeaderBoard(_toLeaderBoardTypeArr);

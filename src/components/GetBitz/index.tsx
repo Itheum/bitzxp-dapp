@@ -41,9 +41,6 @@ import Meme23 from '../../../public/getbitz/memes/23.jpg';
 import Meme24 from '../../../public/getbitz/memes/24.jpg';
 import Meme25 from '../../../public/getbitz/memes/25.jpg';
 import Meme26 from '../../../public/getbitz/memes/26.jpg';
-import Meme27 from '../../../public/getbitz/memes/27.jpg';
-import Meme28 from '../../../public/getbitz/memes/28.jpg';
-import Meme29 from '../../../public/getbitz/memes/29.jpg';
 import Meme3 from '../../../public/getbitz/memes/3.jpg';
 import Meme4 from '../../../public/getbitz/memes/4.jpg';
 import Meme5 from '../../../public/getbitz/memes/5.jpg';
@@ -108,9 +105,6 @@ const MEME_IMGS = [
   Meme24,
   Meme25,
   Meme26,
-  Meme27,
-  Meme28,
-  Meme29,
 ];
 
 const GetBitzView = () => {
@@ -493,7 +487,6 @@ const GetBitzView = () => {
     let _gameDataFetched = gameDataFetched;
     let _isFetchingDataMarshal = isFetchingDataMarshal;
     let _isMemeBurnHappening = isMemeBurnHappening;
-    console.log(address);
     if (!address) {
       return (
         <img
@@ -947,7 +940,7 @@ const GetBitzView = () => {
     // Get All Time leaderboard
     try {
       // S: ACTUAL LOGIC
-      console.log('AXIOS CALL -----> xpGamePrivate/leaderBoard');
+      console.log('GET CALL -----> xpGamePrivate/leaderBoard');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/leaderBoard`,
         callConfig,
@@ -971,7 +964,7 @@ const GetBitzView = () => {
     // Get Monthly Leaderboard
     try {
       // S: ACTUAL LOGIC
-      console.log('AXIOS CALL -----> xpGamePrivate/monthLeaderBoard');
+      console.log('GET CALL -----> xpGamePrivate/monthLeaderBoard');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/monthLeaderBoard?MMYYString=${MMYYString}`,
         callConfig,
@@ -1002,7 +995,7 @@ const GetBitzView = () => {
       },
     };
     try {
-      console.log('AXIOS CALL -----> xpGamePrivate/playerRankOnLeaderBoard');
+      console.log('GET CALL -----> xpGamePrivate/playerRankOnLeaderBoard');
       const res = await fetch(
         `${getApiWeb2Apps(process.env.NEXT_PUBLIC_ENV_NETWORK)}/datadexapi/xpGamePrivate/playerRankOnLeaderBoard?playerAddr=${address}`,
         callConfig,
