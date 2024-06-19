@@ -48,7 +48,7 @@ export default async function handler(
         return false;
       }
     });
-    res.status(200).json({ nfts: data.result.items });
+    res.status(200).json({ nfts: nfts });
   } catch (e) {
     res.status(500).json({ message: e });
   }
