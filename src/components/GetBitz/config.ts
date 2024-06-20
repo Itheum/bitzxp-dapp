@@ -86,41 +86,41 @@ export function getDataBounties() {
       fillPerks: `Donate +100 BiTz to be eligible for the first drop of the Gamer Passport Data NFT.`,
     });
     allBounties.push({
-      bountySubmitter:
-        'erd1xdq4d7uewptx9j9k23aufraklda9leumqc7eu3uezt2kf4fqxz2sex2rxl',
-      bountyId: 'b11',
-      title: 'Top 50 addresses of daily ITHEUM flippers',
-      summary:
-        'A dynamic Data NFT which can be opened to find the top 50 flippers of ITHEUM tokens',
-      readMoreLink: 'https://docs.itheum.io/data-bounties/top-itheum-flippers',
-      submittedOnTs: 1712713989,
-      fillPerks:
-        'Top 20 Leaderboard gets Data NFT once bounty launches. 10 Data NFTs to be dropped to random winners of top 100 Leaderboard.',
-      finalizedDataNftIdentifier: 'DATANFTFT-e936d4-0a',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2',
+      bountySubmitter: '3ibP6nxaKocQPA8S5ntXSo1Xd4aYSa93QKjPzDaPqAmB',
       bountyId: 'b1',
-      title: 'DNB Music DataNFT',
-      summary:
-        'Craft a Music Data NFT featuring a dynamic playlist of at least 3 songs. The playlist can evolve over time based on community input. AI utilization is allowed as long as the content generated complies with the Terms of Use.',
+      title: 'Dummy Bounty - SOL Address',
+      summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim ipsum diam, a placerat velit cursus ut. Nulla ac finibus nulla. Curabitur elementum fermentum lorem, sed porta ipsum molestie in. Praesent congue nisl eu dolor dignissim porta.`,
       readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
+      submittedOnTs: 1718877864,
+      fillPerks: `Maecenas a tortor sit amet neque tristique tincidunt placerat et odio.`,
     });
     allBounties.push({
       bountySubmitter:
-        'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2',
+        'erd1622wqsnpdkwhzr3nxfv0673pdt2cvqq7ffjw9mvlpju9822dac6sarqw2d',
       bountyId: 'b2',
-      title: 'Hip-Hop Music DataNFT',
-      summary:
-        'Craft a Music Data NFT featuring a dynamic playlist of at least 3 songs. The playlist can evolve over time based on community input.',
-      readMoreLink: 'https://docs.itheum.io/data-bounties/top-ride-flippers',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
+      title: 'Dummy Bounty - ERD Address',
+      summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim ipsum diam, a placerat velit cursus ut. Nulla ac finibus nulla. Curabitur elementum fermentum lorem, sed porta ipsum molestie in. Praesent congue nisl eu dolor dignissim porta.`,
+      readMoreLink: '',
+      submittedOnTs: 1718877864,
+      fillPerks: `Maecenas a tortor sit amet neque tristique tincidunt placerat et odio.`,
+    });
+    allBounties.push({
+      bountySubmitter: '0xF8E2166774A02f21471568752E9F863B0E697a7b',
+      bountyId: 'b3',
+      title: 'Dummy Bounty - ETH Address',
+      summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim ipsum diam, a placerat velit cursus ut. Nulla ac finibus nulla. Curabitur elementum fermentum lorem, sed porta ipsum molestie in. Praesent congue nisl eu dolor dignissim porta.`,
+      readMoreLink: '',
+      submittedOnTs: 1718877864,
+      fillPerks: `Maecenas a tortor sit amet neque tristique tincidunt placerat et odio.`,
+    });
+    allBounties.push({
+      bountySubmitter: 'TOBEFILLED',
+      bountyId: 'b4',
+      title: 'Dummy Bounty - Filler Address',
+      summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim ipsum diam, a placerat velit cursus ut. Nulla ac finibus nulla. Curabitur elementum fermentum lorem, sed porta ipsum molestie in. Praesent congue nisl eu dolor dignissim porta.`,
+      readMoreLink: '',
+      submittedOnTs: 1718877864,
+      fillPerks: `Maecenas a tortor sit amet neque tristique tincidunt placerat et odio.`,
     });
     return allBounties;
   } else {
@@ -132,32 +132,6 @@ export function getDataBounties() {
       readMoreLink: '',
       submittedOnTs: 1718622020,
       fillPerks: `Donate +100 BiTz to be eligible for the first drop of the Gamer Passport Data NFT.`,
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2',
-      bountyId: 'b1',
-      title: 'DNB Music DataNFT',
-      summary:
-        'Craft a Music Data NFT featuring a dynamic playlist of at least 3 songs. The playlist can evolve over time based on community input. AI utilization is allowed as long as the content generated complies with the Terms of Use.',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
-      finalizedDataNftIdentifier: 'DATANFTFT-e936d4-09',
-    });
-    allBounties.push({
-      bountySubmitter:
-        'erd1lgyz209038gh8l2zfxq68kzl9ljz0p22hv6l0ev8fydhx8s9cwasdtrua2',
-      bountyId: 'b2',
-      title: 'Hip-Hop Music DataNFT',
-      summary:
-        'Craft a Music Data NFT featuring a dynamic playlist of at least 3 songs. The playlist can evolve over time based on community input.',
-      readMoreLink: '',
-      submittedOnTs: 1714138439,
-      fillPerks:
-        'The Creator of the bounty will receive 5 copies of the album.\n The top 5 contributors on the GiveBiTz leaderboard for this bounty will each receive 3 copies.\n Contributors ranked 6th to 20th will receive 2 copies each.\n Contributors ranked 21st to 50th will receive 1 copy each.\n Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy.\n 50 copies donated to BiTz Monthly Leaderboard',
-      finalizedDataNftIdentifier: 'DATANFTFT-e936d4-0a',
     });
     allBounties.push({
       bountySubmitter:
@@ -212,7 +186,6 @@ export function getDataBounties() {
         Additionally, 5 lucky winners from the top 51 to 100 contributors will each receive 1 copy. 
         50 copies donated to BiTz Monthly Leaderboard`,
     });
-
     allBounties.push({
       bountySubmitter:
         'erd18qxupz0zfffk3pa034pxlsu7tttjw93aey3wlxc7jew8fe4epj6sly56ya',
