@@ -16,6 +16,8 @@ import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import bs58 from 'bs58';
 import { DATA_NFT_COLLECTION_ID } from 'config';
 import { EnvironmentsEnum } from 'models/types';
+import Link from 'next/link';
+import BonusBitzHistory from '../BonusBitzHistory';
 
 const GiveBitzBase = () => {
   const { publicKey, signMessage } = useWallet();
@@ -24,6 +26,7 @@ const GiveBitzBase = () => {
   const collectedBitzSum = useUserBitzStore(
     (state: any) => state.collectedBitzSum,
   );
+  const bonusBitzSum = useUserBitzStore((state: any) => state.bonusBitzSum);
   const bitzBalance = useUserBitzStore((state: any) => state.bitzBalance);
   const [giverLeaderBoardIsLoading, setGiverLeaderBoardIsLoading] =
     useState<boolean>(false);
@@ -108,7 +111,9 @@ const GiveBitzBase = () => {
         const sumGivenBits = data.bits ? parseInt(data.bits, 10) : -2;
         bitzStore.updateGivenBitzSum(sumGivenBits);
         if (sumGivenBits > 0) {
-          bitzStore.updateBitzBalance(collectedBitzSum - sumGivenBits); // update new balance (collected bits - given bits)
+          bitzStore.updateBitzBalance(
+            collectedBitzSum + bonusBitzSum - sumGivenBits,
+          ); // update new balance (collected bits - given bits)
         }
       } catch (err) {
         const message = 'Getting my sum givenBits failed:' + err.message;
@@ -314,7 +319,7 @@ const GiveBitzBase = () => {
             bitsVal,
             isNewGiver,
           );
-          bitzStore.updateBitzBalance(bitzBalance - bitsVal);
+          bitzStore.updateBitzBalance(bitzBalance + bonusBitzSum - bitsVal);
           return true;
         }
       } else {
@@ -402,7 +407,7 @@ const GiveBitzBase = () => {
 
       <div
         id="giveLeaderboard"
-        className="h-[1700px] md:h-[1000px] flex flex-col max-w-[100%] border border-[#35d9fa] mb-[3rem] rounded-[1rem] p-8"
+        className="h-fit flex flex-col max-w-[100%] border border-[#35d9fa] mb-[3rem] rounded-[1rem] p-8"
       >
         <h3 className="text-center mb-[1rem]">POWER-UP LEADERBOARD</h3>
 
@@ -414,6 +419,40 @@ const GiveBitzBase = () => {
           <>
             {giverLeaderBoard && giverLeaderBoard.length > 0 ? (
               <LeaderBoardTable
+                leaderBoardData={giverLeaderBoard}
+                address={address}
+              />
+            ) : (
+              <div className="text-center">{'No Data Yet'!}</div>
+            )}
+          </>
+        )}
+      </div>
+
+      <div
+        id="bonusBitzHistory"
+        className="h-fit flex flex-col max-w-[100%] border border-[#35d9fa] mb-[3rem] rounded-[1rem] p-8"
+      >
+        <div className="flex flex-col mb-8 items-center justify-center">
+          <h2 className="text-foreground text-4xl mb-2">Bonus BiTz History</h2>
+          <span className="text-base text-foreground/75 text-center ">
+            Earn bonus points for being active in the Itheum Protocol.
+            <br />
+            <Link href={'/'} className="underline">
+              {' '}
+              Learn more here
+            </Link>
+          </span>
+        </div>
+
+        {giverLeaderBoardIsLoading ? (
+          <div className="flex justify-center items-center h-100">
+            <Loader />
+          </div>
+        ) : (
+          <>
+            {giverLeaderBoard && giverLeaderBoard.length > 0 ? (
+              <BonusBitzHistory
                 leaderBoardData={giverLeaderBoard}
                 address={address}
               />

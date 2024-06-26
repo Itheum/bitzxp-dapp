@@ -121,11 +121,13 @@ const GetBitzView = () => {
   const bitzStore = useUserBitzStore();
   const cooldown = bitzStore.cooldown;
   const bitzBalance = bitzStore.bitzBalance;
+  const bonusBitzSum = bitzStore.bonusBitzSum;
   const collectedBitzSum = bitzStore.collectedBitzSum;
   const updateBitzBalance = bitzStore.updateBitzBalance;
   const updateCooldown = bitzStore.updateCooldown;
   const updateCollectedBitzSum = bitzStore.updateCollectedBitzSum;
   const updateGivenBitzSum = bitzStore.updateGivenBitzSum;
+  const updateBonusBitzSum = bitzStore.updateBonusBitzSum;
   const updateBonusTries = bitzStore.updateBonusTries;
 
   // a single game-play related (so we have to reset these if the user wants to "replay")
@@ -195,20 +197,16 @@ const GetBitzView = () => {
         (async () => {
           const getBitzGameResult = await viewData(viewDataArgs, nfts[0]);
           if (getBitzGameResult) {
+            const bitzBeforePlay =
+              getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay || 0;
             const sumGivenBits =
               getBitzGameResult.data?.bitsMain?.bitsGivenSum || 0;
-
+            const sumBonusBitz =
+              getBitzGameResult.data?.bitsMain?.bitsBonusSum || 0;
             if (sumGivenBits > 0) {
-              updateBitzBalance(
-                getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay -
-                  sumGivenBits,
-              ); // collected bits - given bits
+              updateBitzBalance(bitzBeforePlay + sumBonusBitz - sumGivenBits); // collected bits - given bits
               updateGivenBitzSum(sumGivenBits); // given bits -- for power-ups
-            } else {
-              updateBitzBalance(
-                getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay,
-              ); // collected bits - not given bits yet
-              updateGivenBitzSum(0); // given bits - not given bits yet
+              updateBonusBitzSum(sumBonusBitz);
             }
 
             updateCooldown(
@@ -300,7 +298,7 @@ const GetBitzView = () => {
   // secondly, we get the user's Data NFTs and flag if the user has the required Data NFT for the game in their wallet
   async function checkIfHasGameDataNft() {
     const _dataNfts = nfts;
-    const hasRequiredDataNFT = _dataNfts.length > 0;
+    const hasRequiredDataNFT = _dataNfts && _dataNfts.length > 0;
     setHasGameDataNFT(hasRequiredDataNFT ? true : false);
     setCheckingIfHasGameDataNFT(false);
     setRandomMeme(MEME_IMGS[Math.floor(Math.random() * MEME_IMGS.length)].src); // set a random meme as well
@@ -383,32 +381,21 @@ const GetBitzView = () => {
           viewDataPayload.data.gamePlayResult.configCanPlayEveryMSecs,
         ),
       );
+      const sumBitzBalance =
+        viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay || 0;
+      const sumBonusBitz = viewDataPayload.data?.bitsMain?.bitsBonusSum || 0;
       const sumGivenBits = viewDataPayload.data?.bitsMain?.bitsGivenSum || 0;
       if (viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay > -1) {
-        if (sumGivenBits > 0) {
-          updateBitzBalance(
-            viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay -
-              sumGivenBits,
-          ); // won some bis, minus given bits and show
-        } else {
-          updateBitzBalance(
-            viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay,
-          ); // won some bis, not given anything yet
-        }
+        updateBitzBalance(sumBitzBalance + sumBonusBitz - sumGivenBits); // won some bis, minus given bits and show
         updateCollectedBitzSum(
           viewDataPayload.data.gamePlayResult.bitsScoreAfterPlay,
         );
       } else {
-        if (sumGivenBits > 0) {
-          updateBitzBalance(
-            viewDataPayload.data.gamePlayResult.bitsScoreBeforePlay -
-              sumGivenBits,
-          ); // did not win bits, minus given bits from current and show
-        } else {
-          updateBitzBalance(
-            viewDataPayload.data.gamePlayResult.bitsScoreBeforePlay,
-          ); // did not win bits, not given anything yet
-        }
+        updateBitzBalance(
+          viewDataPayload.data.gamePlayResult.bitsScoreBeforePlay +
+            sumBonusBitz -
+            sumGivenBits,
+        ); // did not win bits, minus given bits from current and show
         updateCollectedBitzSum(
           viewDataPayload.data.gamePlayResult.bitsScoreBeforePlay,
         );
