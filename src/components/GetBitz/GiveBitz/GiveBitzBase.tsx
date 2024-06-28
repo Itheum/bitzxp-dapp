@@ -38,6 +38,7 @@ const GiveBitzBase = () => {
   const [dataBounties, setDataBounties] = useState<GiveBitzDataBounty[]>([]);
   const [fetchingDataBountiesReceivedSum, setFetchingDataBountiesReceivedSum] =
     useState<boolean>(true);
+  const [isSendingPowerUp, setIsSendingPowerUp] = useState<boolean>(false);
 
   useEffect(() => {
     setFetchingDataBountiesReceivedSum(true);
@@ -474,6 +475,8 @@ const GiveBitzBase = () => {
                   sendPowerUp={sendPowerUp}
                   fetchGivenBitsForGetter={fetchGivenBitsForGetter}
                   fetchGetterLeaderBoard={fetchGetterLeaderBoard}
+                  isSendingPowerUp={isSendingPowerUp}
+                  setIsSendingPowerUp={setIsSendingPowerUp}
                 />
               );
             })

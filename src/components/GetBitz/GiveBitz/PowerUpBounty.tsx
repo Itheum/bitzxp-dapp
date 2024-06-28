@@ -15,6 +15,8 @@ type PowerUpBountyProps = {
   sendPowerUp: any;
   fetchGivenBitsForGetter: any;
   fetchGetterLeaderBoard: any;
+  isSendingPowerUp: boolean;
+  setIsSendingPowerUp: any;
 };
 
 const PowerUpBounty = (props: PowerUpBountyProps) => {
@@ -23,6 +25,8 @@ const PowerUpBounty = (props: PowerUpBountyProps) => {
     sendPowerUp,
     fetchGivenBitsForGetter,
     fetchGetterLeaderBoard,
+    isSendingPowerUp,
+    setIsSendingPowerUp,
   } = props;
   const {
     bountySubmitter,
@@ -126,6 +130,8 @@ const PowerUpBounty = (props: PowerUpBountyProps) => {
                       sendPowerUp={sendPowerUp}
                       fetchGivenBitsForGetter={fetchGivenBitsForGetter}
                       fetchGetterLeaderBoard={fetchGetterLeaderBoard}
+                      isSendingPowerUp={isSendingPowerUp}
+                      setIsSendingPowerUp={setIsSendingPowerUp}
                     />
                   )}
                 </>
