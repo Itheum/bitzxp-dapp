@@ -5,7 +5,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import { GoogleTagManager } from '@next/third-parties/google';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -59,7 +58,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500&display=swap"
             rel="stylesheet"
           />
-          <GoogleTagManager gtmId="G-R4JT4ML00N" />
         </Head>
         <body>
           <Main />

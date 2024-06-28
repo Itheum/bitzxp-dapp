@@ -16,6 +16,8 @@ import { itheumPreaccess, itheumViewData } from 'utils/ItheumViewData';
 import bs58 from 'bs58';
 import { DATA_NFT_COLLECTION_ID } from 'config';
 import { EnvironmentsEnum } from 'models/types';
+import Link from 'next/link';
+import BonusBitzHistory from '../BonusBitzHistory';
 
 const GiveBitzBase = () => {
   const { publicKey, signMessage } = useWallet();
@@ -24,6 +26,7 @@ const GiveBitzBase = () => {
   const collectedBitzSum = useUserBitzStore(
     (state: any) => state.collectedBitzSum,
   );
+  const bonusBitzSum = useUserBitzStore((state: any) => state.bonusBitzSum);
   const bitzBalance = useUserBitzStore((state: any) => state.bitzBalance);
   const [giverLeaderBoardIsLoading, setGiverLeaderBoardIsLoading] =
     useState<boolean>(false);
@@ -108,7 +111,9 @@ const GiveBitzBase = () => {
         const sumGivenBits = data.bits ? parseInt(data.bits, 10) : -2;
         bitzStore.updateGivenBitzSum(sumGivenBits);
         if (sumGivenBits > 0) {
-          bitzStore.updateBitzBalance(collectedBitzSum - sumGivenBits); // update new balance (collected bits - given bits)
+          bitzStore.updateBitzBalance(
+            collectedBitzSum + bonusBitzSum - sumGivenBits,
+          ); // update new balance (collected bits - given bits)
         }
       } catch (err) {
         const message = 'Getting my sum givenBits failed:' + err.message;
@@ -304,7 +309,7 @@ const GiveBitzBase = () => {
           giveBitzGameResult?.data?.statusCode != 200
         ) {
           throw new Error(
-            'Error: Not possible to sent power-up. As error code returned. Do you have enough BiTz to give?',
+            'Error: Not possible to send power-up. Error code returned. Do you have enough BiTz to give?',
           );
         } else {
           fetchMyGivenBitz();
@@ -314,11 +319,10 @@ const GiveBitzBase = () => {
             bitsVal,
             isNewGiver,
           );
-          bitzStore.updateBitzBalance(bitzBalance - bitsVal);
           return true;
         }
       } else {
-        throw new Error('Error: Not possible to sent power-up');
+        throw new Error('Error: Not possible to send power-up');
       }
     } catch (err) {
       console.error(err);
@@ -402,7 +406,7 @@ const GiveBitzBase = () => {
 
       <div
         id="giveLeaderboard"
-        className="h-[1700px] md:h-[1000px] flex flex-col max-w-[100%] border border-[#35d9fa] mb-[3rem] rounded-[1rem] p-8"
+        className="h-fit flex flex-col max-w-[100%] border border-[#35d9fa] mb-[3rem] rounded-[1rem] p-8"
       >
         <h3 className="text-center mb-[1rem]">POWER-UP LEADERBOARD</h3>
 
@@ -423,6 +427,8 @@ const GiveBitzBase = () => {
           </>
         )}
       </div>
+
+      <BonusBitzHistory />
 
       <div id="bounties" className="flex flex-col items-center justify-center">
         <div className="flex flex-col mt-10 mb-8 items-center justify-center ">

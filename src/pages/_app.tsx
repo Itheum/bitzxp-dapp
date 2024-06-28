@@ -6,6 +6,7 @@ import { AppBar } from '../components/AppBar';
 import { ContentContainer } from '../components/ContentContainer';
 import { Footer } from '../components/Footer';
 import Notifications from '../components/Notification';
+import { GoogleTagManager } from '@next/third-parties/google';
 require('@solana/wallet-adapter-react-ui/styles.css');
 require('../styles/globals.css');
 require('../styles/GetBitz.css');
@@ -20,6 +21,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <ContextProvider>
+        <GoogleTagManager gtmId="G-R4JT4ML00N" />
         <div className="flex flex-col flex-auto min-h-[100dvh]">
           <Notifications />
           <AppBar />
