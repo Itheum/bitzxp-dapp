@@ -18,7 +18,6 @@ export default async function handler(
     } = req;
     const publicKey = new PublicKey(publicKeyb58);
     const network = process.env.NEXT_PUBLIC_ENV_NETWORK;
-    console.log(process.env.NEXT_PUBLIC_ENV_NETWORK);
     const url =
       network === EnvironmentsEnum.mainnet
         ? 'https://mainnet.helius-rpc.com'
@@ -43,13 +42,22 @@ export default async function handler(
     const nfts = data.result.items.filter((nft) => {
       const collection = nft.grouping.find((g) => g.group_key === 'collection');
       if (collection) {
-        return collection.group_value === DATA_NFT_COLLECTION_ID;
+        if (process.env.NEXT_PUBLIC_ENV_NETWORK === EnvironmentsEnum.mainnet) {
+          return collection.group_value === DATA_NFT_COLLECTION_ID;
+        } else {
+          return (
+            collection.group_value === DATA_NFT_COLLECTION_ID &&
+            nft.content.json_uri.includes('GetBitz') &&
+            !nft.content.json_uri.includes('Main')
+          );
+        }
       } else {
         return false;
       }
     });
     res.status(200).json({ nfts: nfts });
   } catch (e) {
+    console.log(e);
     res.status(500).json({ message: e });
   }
 }

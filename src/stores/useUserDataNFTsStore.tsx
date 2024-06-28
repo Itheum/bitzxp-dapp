@@ -12,6 +12,7 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
   nfts: [],
   getUserDataNfts: async (publicKey) => {
     let nfts = [];
+    if (!publicKey) return;
     try {
       const resp = await fetch(
         `/api/fetchNfts?publicKeyb58=${publicKey.toBase58()}`,
