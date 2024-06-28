@@ -319,7 +319,6 @@ const GiveBitzBase = () => {
             bitsVal,
             isNewGiver,
           );
-          bitzStore.updateBitzBalance(bitzBalance + bonusBitzSum - bitsVal);
           return true;
         }
       } else {
@@ -429,39 +428,7 @@ const GiveBitzBase = () => {
         )}
       </div>
 
-      <div
-        id="bonusBitzHistory"
-        className="h-fit flex flex-col max-w-[100%] border border-[#35d9fa] mb-[3rem] rounded-[1rem] p-8"
-      >
-        <div className="flex flex-col mb-8 items-center justify-center">
-          <h2 className="text-foreground text-4xl mb-2">Bonus BiTz History</h2>
-          <span className="text-base text-foreground/75 text-center ">
-            Earn bonus points for being active in the Itheum Protocol.
-            <br />
-            <Link href={'/'} className="underline">
-              {' '}
-              Learn more here
-            </Link>
-          </span>
-        </div>
-
-        {giverLeaderBoardIsLoading ? (
-          <div className="flex justify-center items-center h-100">
-            <Loader />
-          </div>
-        ) : (
-          <>
-            {giverLeaderBoard && giverLeaderBoard.length > 0 ? (
-              <BonusBitzHistory
-                leaderBoardData={giverLeaderBoard}
-                address={address}
-              />
-            ) : (
-              <div className="text-center">{'No Data Yet'!}</div>
-            )}
-          </>
-        )}
-      </div>
+      <BonusBitzHistory />
 
       <div id="bounties" className="flex flex-col items-center justify-center">
         <div className="flex flex-col mt-10 mb-8 items-center justify-center ">

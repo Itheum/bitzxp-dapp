@@ -16,7 +16,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Itheum Bitz XPP</title>
+        <title>Itheum Bitz XP</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 

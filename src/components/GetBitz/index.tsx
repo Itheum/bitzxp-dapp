@@ -197,6 +197,7 @@ const GetBitzView = () => {
         (async () => {
           const getBitzGameResult = await viewData(viewDataArgs, nfts[0]);
           if (getBitzGameResult) {
+            console.log(getBitzGameResult);
             const bitzBeforePlay =
               getBitzGameResult.data.gamePlayResult.bitsScoreBeforePlay || 0;
             const sumGivenBits =
