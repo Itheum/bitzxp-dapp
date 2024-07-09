@@ -21,25 +21,31 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta
             name="description"
-            content="Explore Itheum's Bitz XP application on Solana network."
+            content="Play the Itheum BiTz XP game on Solana"
           />
 
-          <meta content="Itheum Bitz XP" property="og:title" />
           <meta
-            content="Explore the Itheum Get Bitz App & Collect XP"
+            content="Itheum Bitz XP : Get Your Itheum XP on Solana"
+            property="og:title"
+          />
+          <meta
+            content="Play the Itheum BiTz XP game on Solana"
             property="og:description"
           />
           <meta
-            content="https://explorer.itheum.io/itheum_explorer_social_hero.png"
+            content="https://bitzxp.itheum.io/itheum_explorer_social_hero.png"
             property="og:image"
           />
-          <meta content="Itheum Bitz XP" property="twitter:title" />
+          <meta
+            content="Itheum Bitz XP : Get Your Itheum XP on Solana"
+            property="twitter:title"
+          />
           <meta
             content="Explore the Itheum Get Bitz App & Collect XP"
             property="twitter:description"
           />
           <meta
-            content="https://explorer.itheum.io/itheum_explorer_social_hero.png"
+            content="https://bitzxp.itheum.io/itheum_explorer_social_hero.png"
             property="twitter:image"
           />
           <meta property="og:type" content="website" />

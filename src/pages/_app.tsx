@@ -16,7 +16,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Itheum Bitz XP</title>
+        <title>Itheum Bitz XP : Get Your Itheum XP on Solana</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <GoogleTagManager gtmId="G-CFR4QN603M" />
