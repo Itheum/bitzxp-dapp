@@ -48,7 +48,7 @@ export default async function handler(
           return (
             collection.group_value === DATA_NFT_COLLECTION_ID &&
             nft.content.json_uri.includes('GetBitz') &&
-            !nft.content.json_uri.includes('Main')
+            nft.content.json_uri.includes('Main')
           );
         }
       } else {

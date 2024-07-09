@@ -6,7 +6,7 @@ export async function itheumPreaccess(
   networkMode: EnvironmentsEnum = EnvironmentsEnum.devnet,
 ) {
   const chainId = networkMode === EnvironmentsEnum.devnet ? 'SD' : 'S1';
-  const preaccessUrl = `${getApiDataMarshal(networkMode)}/preaccess?chainId=${chainId}`;
+  const preaccessUrl = `${getApiDataMarshal(EnvironmentsEnum.mainnet)}/preaccess?chainId=${chainId}`;
   const response = await fetch(preaccessUrl);
   const data = await response.json();
   return data.nonce;
@@ -22,7 +22,7 @@ export async function itheumViewData(
   networkMode: EnvironmentsEnum = EnvironmentsEnum.devnet,
 ): Promise<Response> {
   const chainId = networkMode === EnvironmentsEnum.devnet ? 'SD' : 'S1';
-  let accessUrl = `${getApiDataMarshal(networkMode)}/access?nonce=${nonce}&NFTId=${assetId}&signature=${signature}&chainId=${chainId}&accessRequesterAddr=${address.toBase58()}`;
+  let accessUrl = `${getApiDataMarshal(EnvironmentsEnum.mainnet)}/access?nonce=${nonce}&NFTId=${assetId}&signature=${signature}&chainId=${chainId}&accessRequesterAddr=${address.toBase58()}`;
   if (fwdHeaderKeys && fwdHeaderKeys.length > 0) {
     accessUrl += `&fwdHeaderKeys=${fwdHeaderKeys.join(',')}`;
   }
