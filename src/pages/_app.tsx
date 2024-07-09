@@ -19,9 +19,8 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         <title>Itheum Bitz XP</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-
+      <GoogleTagManager gtmId="G-CFR4QN603M" />
       <ContextProvider>
-        <GoogleTagManager gtmId="G-R4JT4ML00N" />
         <div className="flex flex-col flex-auto min-h-[100dvh]">
           <Notifications />
           <AppBar />
