@@ -18,7 +18,10 @@ const useUserDataNFTsStore = create<UserDataNFTsStore>((set, _get) => ({
         `/api/fetchNfts?publicKeyb58=${publicKey.toBase58()}`,
       );
       const data = await resp.json();
-      nfts = data.nfts;
+      nfts = data.nfts.filter((nft: any) =>
+        nft.content.metadata.name.includes('IXPG'),
+      );
+
       console.log(nfts);
     } catch (e) {
       notify({
