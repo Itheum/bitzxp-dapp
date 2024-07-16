@@ -12,6 +12,14 @@ import {
   useNetworkConfiguration,
 } from './NetworkConfigurationProvider';
 import dynamic from 'next/dynamic';
+import { TipLinkWalletAdapter } from '@tiplink/wallet-adapter';
+import {
+  WalletModalProvider,
+  WalletDisconnectButton,
+  WalletMultiButton,
+  TipLinkWalletAutoConnectV2,
+} from '@tiplink/wallet-adapter-react-ui';
+import { useSearchParams } from 'next/navigation';
 
 const ReactUIWalletModalProviderDynamic = dynamic(
   async () =>
@@ -24,8 +32,18 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { networkConfiguration } = useNetworkConfiguration();
   const network = networkConfiguration as WalletAdapterNetwork;
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  const searchParams = useSearchParams();
 
-  const wallets = useMemo(() => [], [network]);
+  const wallets = useMemo(
+    () => [
+      new TipLinkWalletAdapter({
+        title: 'Itheum BiTz XP',
+        clientId: 'df83f3c6-9727-4d23-9f0b-e23785848800',
+        theme: 'system',
+      }),
+    ],
+    [network],
+  );
 
   const onError = useCallback((error: WalletError) => {
     notify({
@@ -36,16 +54,17 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }, []);
 
   return (
-    // TODO: updates needed for updating and referencing endpoint: wallet adapter rework
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider
         wallets={wallets}
         onError={onError}
         autoConnect={autoConnect}
       >
-        <ReactUIWalletModalProviderDynamic>
-          {children}
-        </ReactUIWalletModalProviderDynamic>
+        <TipLinkWalletAutoConnectV2 isReady query={searchParams}>
+          <ReactUIWalletModalProviderDynamic>
+            {children}
+          </ReactUIWalletModalProviderDynamic>
+        </TipLinkWalletAutoConnectV2>
       </WalletProvider>
     </ConnectionProvider>
   );
